@@ -1,4 +1,4 @@
-# 🏥 HealthSync AI
+# 🏥 Pulsecare AI
 This is my first Elite MERN stack project. I am building a smart healthcare portal.
 
 ## 🚀 Features
