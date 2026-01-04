@@ -46,42 +46,44 @@
 <body>
     <h1>Welcome to Pulsecare-AI </h1>
     <p>I am building my first project!</p>
-    <button>Find a Doctor</button>
-   <script> 
-        const btn = document.querySelector('button');
-        btn.onclick = function(){
-        alert('Searching for doctors near you......') 
-   
-        const doctorData = [
-        { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "C:\Users\pc\Downloads\download (1).jfif" },
-        { name: "Dr. Aryan Khan", specialty: "Neurologist", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200" },
-        { name: "Dr. Sarah Jenkins", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
-        { name: "Dr. Michael Chen", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200" }
-        ];
-        const container = document.querySelector('.doctor-container');
-        container.innerHTML = "";
 
-        doctorData.forEach(doctor => {
-        const cardHTML = `
-            <div class="doctor-card">
-            <img src="${doctor.image}" alt="${doctor.name}">
-            <h2>${doctor.name}</h2>
-            <p>${doctor.specialty}</p>
-            <button class="book-btn">Book Appointment</button>
-            </div>
-        `;
-        container.innerHTML += cardHTML;
+    <button class="find-btn">Find a Doctor</button>
+
+    <div class ="doctor-container"></div>   
+
+    <script> 
+        const doctorData = [
+        { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
+        { name: "Dr. Aryan Khan", specialty: "Neurologist", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200" },
+        { name: "Dr. Sara", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
+        { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200" }
+        ];
+        function displayDoctors () {
+            const container = document.querySelector('.doctor-container');
+            container.innerHTML = "";
+
+            doctorData.forEach(doctor => {
+                const cardHTML = `
+                  <div class="doctor-card">
+                    <img src="${doctor.image}" alt="${doctor.name}">
+                    <h2>${doctor.name}</h2>
+                    <p>${doctor.specialty}</p>
+                    <button class="book-btn">Book Appointment</button>
+                  </div>
+                 `;
+                 container.innerHTML += cardHTML;
         });
-    
-    };
-   </script>
-   <div class ="doctor-container">
-        <div class="doctor-card">
-         <img src ="C:\Users\pc\Downloads\download (1).jfif" alt="doctor photo">
-         <h2> Dr. Shreya Maurya</h2>
-         <p>Specialist: Cardiologist</p>
-         <button class ="book-btn">Book Appointment</button>
-        </div>
-    </div>    
+      }
+      displayDoctors();
+
+      const btn = document.querySelector('.find-btn');
+      btn.onclick = function(){
+        alert("Updating doctor list....");
+        displayDoctors();
+      };
+   
+    </script>
+ 
+   
 </body>
 </html>
