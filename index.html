@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
     <style>
+   
         .doctor-card {
-            border: 2px solid #0052FF;
-            border-radius: 10px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
             padding: 20px;
             width: 250px;
             text-align: center;
-            font-family: sans-serif;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); 
+            transition: all 0.3s ease; 
+            border-color: rgb(213, 204, 242);
+        }
+        .doctor-card:hover {
+            transform: translateY(-10px); 
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2); 
+        }
+        .doctor-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
         }
         .book-btn {
             background-color: #0052FF;
@@ -38,11 +53,19 @@
         alert('Searching for doctors near you......') 
     };
    </script>
-   <div class="doctor-card">
-    <img src ="C:\Users\pc\Downloads\download (1).jfif" alt="doctor photo">
-    <h2> Dr. Shreya Maurya</h2>
-    <p>Specialist: Cardiologist</p>
-    <button class ="book-btn">Book Appointment</button>
-   </div>
+   <div class ="doctor-container">
+        <div class="doctor-card">
+         <img src ="C:\Users\pc\Downloads\download (1).jfif" alt="doctor photo">
+         <h2> Dr. Shreya Maurya</h2>
+         <p>Specialist: Cardiologist</p>
+         <button class ="book-btn">Book Appointment</button>
+        </div>
+        <div class="doctor-card">
+         <img src ="C:\Users\pc\Downloads\images.png" alt="doctor photo">
+         <h2> Dr. Sia N</h2>
+         <p>Specialist: Pychotherapist</p>
+         <button class ="book-btn">Book Appointment</button>
+        </div>
+    </div>    
 </body>
 </html>
