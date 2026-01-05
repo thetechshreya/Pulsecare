@@ -42,7 +42,7 @@
             text-align: center;
             margin: 20px 0;
         }
-        .doctorsearch {
+        #doctorsearch {
             padding: 12px 20px;
             width:400px;
             border: 2px solid #0052FF;
@@ -50,6 +50,13 @@
             font-size: 16px;
             outline: none;
             
+        }
+        .book-btn {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .book-btn:active {
+            transform: scale(0.95); 
         }
     </style>
     <meta charset="UTF-8">
@@ -75,52 +82,52 @@
         { name: "Dr. Sara", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
         { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200" }
         ];
-        function displayDoctors () {
-            const container = document.querySelector('.doctor-container');
-            container.innerHTML = "";
+    
+        function displayDoctors() {
+            renderFilteredDoctors(doctorData);
+        } 
+        displayDoctors(); 
+        const btn = document.querySelector('.find-btn');
+        btn.onclick = function() {
+            alert("Updating doctor list...");
+            displayDoctors();
+        };
 
-            doctorData.forEach(doctor => {
-                const cardHTML = `
-                  <div class="doctor-card">
-                    <img src="${doctor.image}" alt="${doctor.name}">
-                    <h2>${doctor.name}</h2>
-                    <p>${doctor.specialty}</p>
-                    <button class="book-btn">Book Appointment</button>
-                  </div>
-                 `;
-                 container.innerHTML += cardHTML;
+    const searchInput = document.getElementById('doctorSearch');
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase(); 
+        const filteredDoctors = doctorData.filter(doctor => {
+            return doctor.specialty.toLowerCase().includes(searchTerm);
         });
-      }
-      displayDoctors();
-
-      const btn = document.querySelector('.find-btn');
-      btn.onclick = function(){
-        alert("Updating doctor list....");
-        displayDoctors();
-      };
-
-const searchInput = document.getElementById('doctorSearch');
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase(); 
-    const filteredDoctors = doctorData.filter(doctor => {
-        return doctor.specialty.toLowerCase().includes(searchTerm);
+        renderFilteredDoctors(filteredDoctors);
     });
-    renderFilteredDoctors(filteredDoctors);
-});
-function renderFilteredDoctors(list) {
-    const container = document.querySelector('.doctor-container');
-    container.innerHTML = ""; 
+    function renderFilteredDoctors(list) {
+        const container = document.querySelector('.doctor-container');
+        container.innerHTML = ""; 
 
-    list.forEach(doctor => {
-        const cardHTML = `
-            <div class="doctor-card">
-                <img src="${doctor.image}" alt="${doctor.name}">
-                <h2>${doctor.name}</h2>
-                <p>${doctor.specialty}</p>
-                <button class="book-btn">Book Appointment</button>
-            </div>
+    list.forEach((doctor, index) => {
+    
+        const card = document.createElement('div');
+        card.className = 'doctor-card';
+        
+    
+        card.innerHTML = `
+            <img src="${doctor.image}" alt="${doctor.name}">
+            <h2>${doctor.name}</h2>
+            <p>${doctor.specialty}</p>
+            <button class="book-btn">Book Appointment</button>
         `;
-        container.innerHTML += cardHTML;
+
+    
+        const bookBtn = card.querySelector('.book-btn');
+        bookBtn.onclick = function() {
+            alert(`✅ Appointment Confirmed with ${doctor.name}!\nSpecialty: ${doctor.specialty}`);
+            
+        
+            bookBtn.innerText = "Booked";
+            bookBtn.style.backgroundColor = "#28a745"; 
+        };
+        container.appendChild(card);
     });
 }
     </script>
