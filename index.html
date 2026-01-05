@@ -74,6 +74,12 @@
     </div>
 
     <div class ="doctor-container"></div>   
+    <hr> <div class="booking-summary">
+    <h2>My Appointments</h2>
+    <ul id="appointmentList">
+        <p>No appointments booked yet.</p>
+    </ul>
+</div>
 
     <script> 
         const doctorData = [
@@ -89,6 +95,7 @@
         displayDoctors(); 
         const btn = document.querySelector('.find-btn');
         btn.onclick = function() {
+            
             alert("Updating doctor list...");
             displayDoctors();
         };
@@ -121,6 +128,17 @@
     
         const bookBtn = card.querySelector('.book-btn');
         bookBtn.onclick = function() {
+                                
+                    const appointmentList = document.getElementById('appointmentList');
+
+    
+                    if (appointmentList.querySelector('p')) {
+                        appointmentList.innerHTML = "";
+                    }
+        
+                    const li = document.createElement('li');
+                    li.innerText = `Confirmed: ${doctor.name} - ${doctor.specialty}`;
+                    appointmentList.appendChild(li);
             alert(`✅ Appointment Confirmed with ${doctor.name}!\nSpecialty: ${doctor.specialty}`);
             
         
