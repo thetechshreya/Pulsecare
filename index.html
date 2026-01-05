@@ -36,7 +36,20 @@
             height: 100px;
             width: 100px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: cover;    
+        }
+        .search-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .doctorsearch {
+            padding: 12px 20px;
+            width:400px;
+            border: 2px solid #0052FF;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            
         }
     </style>
     <meta charset="UTF-8">
@@ -48,6 +61,10 @@
     <p>I am building my first project!</p>
 
     <button class="find-btn">Find a Doctor</button>
+    <div class ="search-section">
+        <input type="text" id="doctorSearch" placeholder="Search by specialty(e.g. Cardiologist)....">
+
+    </div>
 
     <div class ="doctor-container"></div>   
 
@@ -81,7 +98,31 @@
         alert("Updating doctor list....");
         displayDoctors();
       };
-   
+
+const searchInput = document.getElementById('doctorSearch');
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase(); 
+    const filteredDoctors = doctorData.filter(doctor => {
+        return doctor.specialty.toLowerCase().includes(searchTerm);
+    });
+    renderFilteredDoctors(filteredDoctors);
+});
+function renderFilteredDoctors(list) {
+    const container = document.querySelector('.doctor-container');
+    container.innerHTML = ""; 
+
+    list.forEach(doctor => {
+        const cardHTML = `
+            <div class="doctor-card">
+                <img src="${doctor.image}" alt="${doctor.name}">
+                <h2>${doctor.name}</h2>
+                <p>${doctor.specialty}</p>
+                <button class="book-btn">Book Appointment</button>
+            </div>
+        `;
+        container.innerHTML += cardHTML;
+    });
+}
     </script>
  
    
