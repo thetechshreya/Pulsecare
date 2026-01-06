@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
     <style>
+        body.dark-mode {
+            filter: invert(1) hue-rotate(180deg);
+            background-color: #1a1a1a;
+        }
+        body.dark-mode img{
+            filter : invert(1) hue-rotate(180deg);
+        }
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #ffffff;
+            background-color: #afd2e96e;
             padding: 15px 50px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(57, 69, 85, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
+            
+         }
+       
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -42,7 +51,7 @@
             text-align: center;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); 
             transition: all 0.3s ease; 
-            border-color: rgb(213, 204, 242);
+            border-color: rgb(199, 197, 207);
         }
         .doctor-card:hover {
             transform: translateY(-10px); 
@@ -134,12 +143,7 @@
     <div id="appointmentList">
         <p id="empty-msg">No appointments booked yet.</p>
     </div>
-</div>
-<div class="booking-section">
-    <h2>📋 My Appointments</h2>
-    <div id="appointmentList">
-        <p id="empty-msg">No appointments booked yet.</p>
-    </div>
+
 </div>
     <script> 
         const doctorData = [
@@ -212,6 +216,17 @@
         container.appendChild(card);
     });
 }
+
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.onclick = function(e) {
+    e.preventDefault();
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+        themeToggle.innerText = "☀️ Light Mode";
+    } else {
+        themeToggle.innerText = "🌙 Dark Mode";
+    }
+};
     </script>
  
    
