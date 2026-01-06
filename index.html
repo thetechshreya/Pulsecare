@@ -13,15 +13,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #afd2e96e;
+            background-color: #ffffff;
             padding: 15px 50px;
-            box-shadow: 0 2px 10px rgba(57, 69, 85, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
             
          }
-       
+        body.dark-mode .navbar{
+            background-color: #ffffff;
+        }
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -114,6 +116,47 @@
             justify-content: space-between;
             align-items: center;
         }
+        :root{
+            --accent-blue: #0052FF;
+            --footer-link-color: #ffffff
+        }
+        body.dark-mode .main-footer {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        .my-name {
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .footer-links a {
+            color: #00d4ff; 
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .main-footer{
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .my-name{
+            color:#0052FF;
+            font-weight: bold;
+        }
+        .footer-links{
+            display:flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .footer-links a:hover{
+            color:white;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -145,6 +188,16 @@
     </div>
 
 </div>
+<footer class ="main-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 Pulsecare-AI. Built by <span class="my-name">Shreya Maurya</span></p>
+        <div class ="footer-links">
+            <a href="https://github.com/thetechshreya" target="_blank">GitHub</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+</footer>
     <script> 
         const doctorData = [
         { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
