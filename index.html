@@ -42,7 +42,7 @@
             text-align: center;
             margin: 20px 0;
         }
-        #doctorsearch {
+        #doctorSearch {
             padding: 12px 20px;
             width:400px;
             border: 2px solid #0052FF;
@@ -58,6 +58,23 @@
         .book-btn:active {
             transform: scale(0.95); 
         }
+        .booking-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+
+        .appointment-ticket {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid #28a745; 
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -72,15 +89,20 @@
         <input type="text" id="doctorSearch" placeholder="Search by specialty(e.g. Cardiologist)....">
 
     </div>
+    <div class="doctor-container"></div>
 
-    <div class ="doctor-container"></div>   
-    <hr> <div class="booking-summary">
-    <h2>My Appointments</h2>
-    <ul id="appointmentList">
-        <p>No appointments booked yet.</p>
-    </ul>
+<div class="booking-section">
+    <h2>📋 My Appointments</h2>
+    <div id="appointmentList">
+        <p id="empty-msg">No appointments booked yet.</p>
+    </div>
 </div>
-
+<div class="booking-section">
+    <h2>📋 My Appointments</h2>
+    <div id="appointmentList">
+        <p id="empty-msg">No appointments booked yet.</p>
+    </div>
+</div>
     <script> 
         const doctorData = [
         { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
@@ -109,15 +131,13 @@
         renderFilteredDoctors(filteredDoctors);
     });
     function renderFilteredDoctors(list) {
-        const container = document.querySelector('.doctor-container');
-        container.innerHTML = ""; 
+    const container = document.querySelector('.doctor-container');
+    container.innerHTML = ""; 
 
-    list.forEach((doctor, index) => {
-    
+    list.forEach((doctor) => {
         const card = document.createElement('div');
         card.className = 'doctor-card';
         
-    
         card.innerHTML = `
             <img src="${doctor.image}" alt="${doctor.name}">
             <h2>${doctor.name}</h2>
@@ -125,26 +145,32 @@
             <button class="book-btn">Book Appointment</button>
         `;
 
-    
         const bookBtn = card.querySelector('.book-btn');
-        bookBtn.onclick = function() {
-                                
-                    const appointmentList = document.getElementById('appointmentList');
 
-    
-                    if (appointmentList.querySelector('p')) {
-                        appointmentList.innerHTML = "";
-                    }
+        bookBtn.onclick = function() {
+            alert(`✅ Appointment Confirmed with ${doctor.name}!`);
         
-                    const li = document.createElement('li');
-                    li.innerText = `Confirmed: ${doctor.name} - ${doctor.specialty}`;
-                    appointmentList.appendChild(li);
-            alert(`✅ Appointment Confirmed with ${doctor.name}!\nSpecialty: ${doctor.specialty}`);
+            const listArea = document.getElementById('appointmentList');
+            const emptyMsg = document.getElementById('empty-msg');
+
+            if (emptyMsg) { emptyMsg.remove(); }
+
             
-        
+            const ticket = document.createElement('div');
+            ticket.className = 'appointment-ticket';
+            ticket.innerHTML = `
+                <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
+                <small>Just Now</small>
+            `;
+
+            listArea.appendChild(ticket);
+
+            
             bookBtn.innerText = "Booked";
-            bookBtn.style.backgroundColor = "#28a745"; 
+            bookBtn.style.backgroundColor = "#28a745";
+            bookBtn.disabled = true; 
         };
+
         container.appendChild(card);
     });
 }
