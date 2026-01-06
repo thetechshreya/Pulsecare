@@ -2,7 +2,37 @@
 <html lang="en">
 <head>
     <style>
-   
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 15px 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0052FF;
+            
+        }
+        .nav-links{
+            list-style: none;
+            display: flex;
+            gap: 30px;    
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover{
+            color:#0052FF;
+        }
         .doctor-card {
             background-color: white;
             border: 1px solid #e0e0e0;
@@ -81,6 +111,14 @@
     <title>Document</title>
 </head>
 <body>
+    <nav class ="navbar">
+        <div class="logo">Pulsecare-AI 🏥</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#appointmentList">Appointment</a></li>
+            <li> <a href="#" id="theme-toggle">🌙Dark Mode</a></li>
+        </ul>
+    </nav>
     <h1>Welcome to Pulsecare-AI </h1>
     <p>I am building my first project!</p>
 
