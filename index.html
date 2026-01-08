@@ -195,6 +195,33 @@
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
             }
+            
+            .stars {
+                margin: 10px 0;
+                font-size: 1.2rem;
+            }
+
+            .delete-btn {
+                background: #ff4d4d;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 5px 10px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background 0.3s;
+            }
+
+            .delete-btn:hover {
+                background: #cc0000;
+            }
+
+
+            .appointment-ticket {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -240,10 +267,10 @@
 </footer>
     <script> 
         const doctorData = [
-        { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
-        { name: "Dr. Aryan Khan", specialty: "Neurologist", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200" },
-        { name: "Dr. Sara", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200" },
-        { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200" }
+        { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
+        { name: "Dr. Aryan Khan", specialty: "Neurologist", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200",rating:4 },
+        { name: "Dr. Sara", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
+        { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 }
         ];
     
         function displayDoctors() {
@@ -272,13 +299,14 @@ btn.onclick = function() {
     list.forEach((doctor) => {
         const card = document.createElement('div');
         card.className = 'doctor-card';
-        
-        card.innerHTML = `
-            <img src="${doctor.image}" alt="${doctor.name}">
-            <h2>${doctor.name}</h2>
-            <p>${doctor.specialty}</p>
-            <button class="book-btn">Book Appointment</button>
-        `;
+                    
+                
+            card.innerHTML = `
+                <img src="${doctor.image}" alt="${doctor.name}">
+                <h2>${doctor.name}</h2>
+                <p>${doctor.specialty}</p>
+                <div class="stars">${"⭐".repeat(doctor.rating)}</div> <button class="book-btn">Book Appointment</button>
+            `;
 
         const bookBtn = card.querySelector('.book-btn');
 
@@ -290,14 +318,24 @@ btn.onclick = function() {
 
             if (emptyMsg) { emptyMsg.remove(); }
 
-            
-            const ticket = document.createElement('div');
-            ticket.className = 'appointment-ticket';
-            ticket.innerHTML = `
-                <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
-                <small>Just Now</small>
-            `;
 
+                const ticket = document.createElement('div');
+                ticket.className = 'appointment-ticket';
+                ticket.innerHTML = `
+                    <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
+                    <button class="delete-btn" title="Cancel Appointment">&times;</button>
+                `;
+
+
+                const deleteBtn = ticket.querySelector('.delete-btn');
+                deleteBtn.onclick = function() {
+                    ticket.remove(); 
+                    if (listArea.children.length === 0) {
+                        listArea.innerHTML = '<p id="empty-msg">No appointments booked yet.</p>';
+                    }
+                };
+
+listArea.appendChild(ticket);
             listArea.appendChild(ticket);
 
             
