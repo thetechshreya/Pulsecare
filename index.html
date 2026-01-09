@@ -93,7 +93,8 @@
             
         }
         .book-btn {
-            transition: background-color 0.3s, transform 0.2s;
+           
+            transition: background-color 0.4s ease, transform 0.2s;
         }
 
         .book-btn:active {
@@ -270,6 +271,8 @@
         { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
         { name: "Dr. Aryan Khan", specialty: "Neurologist", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200",rating:4 },
         { name: "Dr. Sara", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
+        { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 },
+        { name: "Dr. Raj", specialty: "Heartspecialist", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 },
         { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 }
         ];
     
@@ -295,57 +298,60 @@ btn.onclick = function() {
     function renderFilteredDoctors(list) {
     const container = document.querySelector('.doctor-container');
     container.innerHTML = ""; 
+list.forEach((doctor, index) => { // Added 'index' back here
+    const card = document.createElement('div');
+    card.className = 'doctor-card';
+    
+    // 1. Give the button a unique ID based on its index
+    card.innerHTML = `
+        <img src="${doctor.image}" alt="${doctor.name}">
+        <h2>${doctor.name}</h2>
+        <p>${doctor.specialty}</p>
+        <div class="stars">${"⭐".repeat(doctor.rating)}</div>
+        <button class="book-btn" id="book-btn-${index}">Book Appointment</button>
+    `;
 
-    list.forEach((doctor) => {
-        const card = document.createElement('div');
-        card.className = 'doctor-card';
-                    
-                
-            card.innerHTML = `
-                <img src="${doctor.image}" alt="${doctor.name}">
-                <h2>${doctor.name}</h2>
-                <p>${doctor.specialty}</p>
-                <div class="stars">${"⭐".repeat(doctor.rating)}</div> <button class="book-btn">Book Appointment</button>
-            `;
+    const bookBtn = card.querySelector('.book-btn');
 
-        const bookBtn = card.querySelector('.book-btn');
-
-        bookBtn.onclick = function() {
-            alert(`✅ Appointment Confirmed with ${doctor.name}!`);
+    bookBtn.onclick = function() {
+        alert(`✅ Appointment Confirmed with ${doctor.name}!`);
         
-            const listArea = document.getElementById('appointmentList');
-            const emptyMsg = document.getElementById('empty-msg');
+        const listArea = document.getElementById('appointmentList');
+        const emptyMsg = document.getElementById('empty-msg');
+        if (emptyMsg) { emptyMsg.remove(); }
 
-            if (emptyMsg) { emptyMsg.remove(); }
+        const ticket = document.createElement('div');
+        ticket.className = 'appointment-ticket';
+        ticket.innerHTML = `
+            <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
+            <button class="delete-btn" title="Cancel Appointment">&times;</button>
+        `;
 
-
-                const ticket = document.createElement('div');
-                ticket.className = 'appointment-ticket';
-                ticket.innerHTML = `
-                    <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
-                    <button class="delete-btn" title="Cancel Appointment">&times;</button>
-                `;
-
-
-                const deleteBtn = ticket.querySelector('.delete-btn');
-                deleteBtn.onclick = function() {
-                    ticket.remove(); 
-                    if (listArea.children.length === 0) {
-                        listArea.innerHTML = '<p id="empty-msg">No appointments booked yet.</p>';
-                    }
-                };
-
-listArea.appendChild(ticket);
-            listArea.appendChild(ticket);
-
+        // 2. THE FIX: The Delete Logic
+        const deleteBtn = ticket.querySelector('.delete-btn');
+        deleteBtn.onclick = function() {
+            ticket.remove();
             
-            bookBtn.innerText = "Booked";
-            bookBtn.style.backgroundColor = "#28a745";
-            bookBtn.disabled = true; 
+            // RESET THE BUTTON: Find the specific book button and make it active again
+            bookBtn.innerText = "Book Appointment";
+            bookBtn.style.backgroundColor = "#0052FF"; // Original Blue
+            bookBtn.disabled = false;
+
+            if (listArea.children.length === 0) {
+                listArea.innerHTML = '<p id="empty-msg">No appointments booked yet.</p>';
+            }
         };
 
-        container.appendChild(card);
-    });
+        listArea.appendChild(ticket);
+
+        // Change button look to "Booked"
+        bookBtn.innerText = "Booked";
+        bookBtn.style.backgroundColor = "#28a745";
+        bookBtn.disabled = true; 
+    };
+
+    container.appendChild(card);
+});
 }
 
 const themeToggle = document.getElementById('theme-toggle');
