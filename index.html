@@ -223,12 +223,44 @@
                 justify-content: space-between;
                 align-items: center;
             }
+            /* The Reminder Box */
+            .reminder-popup {
+                position: fixed;
+                bottom: 20px;
+                right: -300px; 
+                background-color: #0052FF;
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                transition: right 0.5s ease-in-out; 
+                z-index: 2000;
+                max-width: 250px;
+            }
+            .reminder-popup.show {
+                right: 20px;
+            }
+
+            .reminder-btn {
+                background: white;
+                color: #0052FF;
+                border: none;
+                padding: 5px 10px;
+                margin-top: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: bold;
+            }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <div id="reminder" class="reminder-popup">
+    <p>👋 Hello! Don't forget to book your annual health checkup.</p>
+    <button class="reminder-btn" onclick="closeReminder()">Got it!</button>
+</div>
     <nav class ="navbar">
         <div class="logo">Pulsecare-AI 🏥</div>
         <ul class="nav-links">
@@ -302,7 +334,7 @@ list.forEach((doctor, index) => { // Added 'index' back here
     const card = document.createElement('div');
     card.className = 'doctor-card';
     
-    // 1. Give the button a unique ID based on its index
+    
     card.innerHTML = `
         <img src="${doctor.image}" alt="${doctor.name}">
         <h2>${doctor.name}</h2>
@@ -326,15 +358,13 @@ list.forEach((doctor, index) => { // Added 'index' back here
             <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
             <button class="delete-btn" title="Cancel Appointment">&times;</button>
         `;
-
-        // 2. THE FIX: The Delete Logic
         const deleteBtn = ticket.querySelector('.delete-btn');
         deleteBtn.onclick = function() {
             ticket.remove();
             
-            // RESET THE BUTTON: Find the specific book button and make it active again
+
             bookBtn.innerText = "Book Appointment";
-            bookBtn.style.backgroundColor = "#0052FF"; // Original Blue
+            bookBtn.style.backgroundColor = "#0052FF"; 
             bookBtn.disabled = false;
 
             if (listArea.children.length === 0) {
@@ -344,7 +374,6 @@ list.forEach((doctor, index) => { // Added 'index' back here
 
         listArea.appendChild(ticket);
 
-        // Change button look to "Booked"
         bookBtn.innerText = "Booked";
         bookBtn.style.backgroundColor = "#28a745";
         bookBtn.disabled = true; 
@@ -364,6 +393,15 @@ themeToggle.onclick = function(e) {
         themeToggle.innerText = "🌙 Dark Mode";
     }
 };
+setTimeout(() => {
+    const reminder = document.getElementById('reminder');
+    reminder.classList.add('show');
+}, 3000); 
+
+function closeReminder() {
+    const reminder = document.getElementById('reminder');
+    reminder.classList.remove('show');
+}
     </script>
  
    
