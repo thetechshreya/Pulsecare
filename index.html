@@ -251,6 +251,36 @@
                 border-radius: 5px;
                 font-weight: bold;
             }
+            .quiz-section {
+                background: #eef2ff;
+                padding: 30px;
+                border-radius: 15px;
+                margin: 40px 0;
+                text-align: center;
+            }
+
+            .quiz-options {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .quiz-options button {
+                padding: 10px 20px;
+                border: 2px solid #0052FF;
+                background: white;
+                color: #0052FF;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .quiz-options button:hover {
+                background: #0052FF;
+                color: white;
+            }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -280,6 +310,18 @@
     <div id="loader" class="loader"></div>
 <div class="doctor-container"></div>
     <div class="doctor-container"></div>
+    <div class="quiz-section">
+    <h2>🧪 Quick Health Check</h2>
+    <div id="quiz-container">
+        <p id="question">How many glasses of water do you drink daily?</p>
+        <div class="quiz-options">
+            <button onclick="checkHealth(1)">0-2 Glasses</button>
+            <button onclick="checkHealth(2)">3-5 Glasses</button>
+            <button onclick="checkHealth(3)">6+ Glasses</button>
+        </div>
+        <p id="quiz-result"></p>
+    </div>
+</div>
 
 <div class="booking-section">
     <h2>📋 My Appointments</h2>
@@ -401,6 +443,19 @@ setTimeout(() => {
 function closeReminder() {
     const reminder = document.getElementById('reminder');
     reminder.classList.remove('show');
+}
+function checkHealth(score) {
+    const result = document.getElementById('quiz-result');
+    if (score === 1) {
+        result.innerHTML = "💧 <strong>Tip:</strong> Try to increase your water intake for better energy!";
+        result.style.color = "#ff4d4d";
+    } else if (score === 2) {
+        result.innerHTML = "👍 <strong>Good:</strong> You're on the right track! Aim for 8 glasses.";
+        result.style.color = "#ffa500";
+    } else {
+        result.innerHTML = "🌟 <strong>Excellent:</strong> You are perfectly hydrated! Keep it up.";
+        result.style.color = "#28a745";
+    }
 }
     </script>
  
