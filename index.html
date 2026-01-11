@@ -2,53 +2,53 @@
 <html lang="en">
 <head>
     <style>
-                .hamburger {
-                display: flex; 
-                flex-direction: column;
-                gap: 5px;
-                cursor: pointer;
-                padding: 10px;
-                z-index: 3000;
-                width: 35px; 
-            }
+            .hamburger {
+            display: flex; 
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 3000;
+            width: 35px; 
+        }
 
-            .hamburger span {
-                display: block;
-                width: 100%;
-                height: 4px;
-                background-color: #0052FF; 
-                border-radius: 2px;
-            }
-            .sidebar {
-                height: 100%;
-                width: 0; 
-                position: fixed;
-                z-index: 4000; 
-                top: 0;
-                left: 0;
-                background-color: #222;
-                overflow-x: hidden;
-                transition: 0.5s;
-                padding-top: 60px;
-            }
-            .sidebar a {
-                padding: 15px 30px;
-                text-decoration: none;
-                font-size: 22px;
-                color: #818181;
-                display: block;
-                transition: 0.3s;
-            }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: #0052FF; 
+            border-radius: 2px;
+        }
+        .sidebar {
+            height: 100%;
+            width: 0; 
+            position: fixed;
+            z-index: 4000; 
+            top: 0;
+            left: 0;
+            background-color: #222;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
 
-            .sidebar a:hover {
-                color: #f1f1f1;
-                background-color: #0052FF;
-            }
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: #0052FF;
+        }
 
-            .sidebar .closebtn {
-                position: absolute;
-                top: 10px;
-                right: 25px;
+        .sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
                 font-size: 36px;
             }
         body.dark-mode {
@@ -333,15 +333,9 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pulsecare-AI</title>
 </head>
 <body>
-            <div class="hamburger" onclick="toggleSidebar()">
-            <span></span>
-            <span></span>
-            <span></span>
-            </div>
-
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
             <a href="#" onclick="toggleSidebar()">Home</a>
@@ -349,6 +343,12 @@
             <a href="#appointmentList" onclick="toggleSidebar()">My Appointments</a>
             <a href="#quiz-container" onclick="toggleSidebar()">Health Quiz</a>
         </div>
+
+        <div class="hamburger" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
 
     <div id="reminder" class="reminder-popup">
     <p>👋 Hello! Don't forget to book your annual health checkup.</p>
@@ -364,7 +364,6 @@
     </nav>
     <h1>Welcome to Pulsecare-AI </h1>
     <p>I am building my first project!</p>
-
     <button class="find-btn">Find a Doctor</button>
     <div class ="search-section">
         <input type="text" id="doctorSearch" placeholder="Search by specialty(e.g. Cardiologist)....">
@@ -378,9 +377,9 @@
     <div id="quiz-container">
         <p id="question">How many glasses of water do you drink daily?</p>
         <div class="quiz-options">
-            <button onclick="checkHealth(1)">0-2 Glasses</button>
-            <button onclick="checkHealth(2)">3-5 Glasses</button>
-            <button onclick="checkHealth(3)">6+ Glasses</button>
+            <button onclick="checkHealth(1, 1)">0-2 Glasses</button>
+            <button onclick="checkHealth(2, 1)">3-5 Glasses</button>
+            <button onclick="checkHealth(3, 1)">6+ Glasses</button>
         </div>
         <p id="quiz-result"></p>
     </div>
@@ -507,17 +506,30 @@ function closeReminder() {
     const reminder = document.getElementById('reminder');
     reminder.classList.remove('show');
 }
-function checkHealth(score) {
-    const result = document.getElementById('quiz-result');
-    if (score === 1) {
-        result.innerHTML = "💧 <strong>Tip:</strong> Try to increase your water intake for better energy!";
-        result.style.color = "#ff4d4d";
-    } else if (score === 2) {
-        result.innerHTML = "👍 <strong>Good:</strong> You're on the right track! Aim for 8 glasses.";
-        result.style.color = "#ffa500";
-    } else {
-        result.innerHTML = "🌟 <strong>Excellent:</strong> You are perfectly hydrated! Keep it up.";
-        result.style.color = "#28a745";
+let totalHealthScore = 0; 
+
+function checkHealth(score, currentStep) {
+    totalHealthScore += score;
+    const quizContainer = document.getElementById('quiz-container');
+
+    if (currentStep === 1) {
+        quizContainer.innerHTML = `
+            <p id="question">Do you exercise at least 3 times a week?</p>
+            <div class="quiz-options">
+                <button onclick="checkHealth(1, 2)">Rarely</button>
+                <button onclick="checkHealth(2, 2)">Sometimes</button>
+                <button onclick="checkHealth(3, 2)">Every Week!</button>
+            </div>
+        `;
+    } else if (currentStep === 2) {
+        
+        let recommendation = totalHealthScore >= 5 ? "🌟 Excellent!" : "💪 Keep improving!";
+        
+        quizContainer.innerHTML = `
+            <h3>Your Score: ${totalHealthScore}/6</h3>
+            <p>${recommendation}</p>
+            <button onclick="location.reload()" style="margin-top:10px; padding:5px; cursor:pointer;">Restart Quiz</button>
+        `;
     }
 }
 function toggleSidebar() {
