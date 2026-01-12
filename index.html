@@ -420,6 +420,7 @@
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script> 
         const doctorData = [
         { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
@@ -529,7 +530,6 @@ let totalHealthScore = 0;
 function checkHealth(score, currentStep) {
     totalHealthScore += score;
     
-    // We target the CONTENT div, not the whole container
     const quizContent = document.getElementById('quiz-content'); 
     const progressBar = document.getElementById('progress-bar');
 
@@ -546,6 +546,12 @@ function checkHealth(score, currentStep) {
         `;
     } else if (currentStep === 2) {
         progressBar.style.width = "100%";
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#0052FF', '#28a745', '#ffffff'] 
+        });
         
         let recommendation = totalHealthScore <= 3 ? "Lifestyle boost needed!" : "You're a star!";
         let doctorType = totalHealthScore <= 3 ? "General Physician" : "Dermatologist";
@@ -560,6 +566,7 @@ function checkHealth(score, currentStep) {
             <button onclick="location.reload()" style="background:none; border:none; color:grey; cursor:pointer; display:block; margin: 10px auto;">Restart Quiz</button>
         `;
     }
+    
 }
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
