@@ -193,7 +193,7 @@
         .id-card {
             width: 350px;
             height: 200px;
-            background: linear-gradient(135deg, #0052FF 0%, #002e8f 100%);
+            background: linear-gradient(135deg, #0052FF 0%, #08338f 100%);
             color: white;
             margin: 20px auto;
             border-radius: 15px;
@@ -207,7 +207,7 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-bottom: 1px solid rgba(228, 11, 11, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -377,7 +377,20 @@
                 width: 33%; 
                 background-color: #0052FF;
                 transition: width 0.5s ease-in-out;
-            }      
+            }  
+            @media print {
+            body * {
+                visibility: hidden; /
+            }
+            .id-card, .id-card * {
+                visibility: visible; 
+            }
+            .id-card {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }    
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -453,6 +466,7 @@
         <h3 id="displayName">Name</h3>
         <p>Member ID: <span id="displayID">#0000</span></p>
         <p>Status: <span style="color: #28a745;">● Active</span></p>
+        <button onclick="downloadCard()" class="reminder-btn" style="background: white; color: #0052FF; margin-top: 10px;">💾 Save/Print Card</button>
     </div>
 </div>
 <footer class ="main-footer">
@@ -565,7 +579,17 @@ function generateCard() {
 
     confetti({ particleCount: 50, spread: 50 });
 }
+function downloadCard() {
 
+    const cardContent = document.getElementById('idCard').innerHTML;
+    const originalContent = document.body.innerHTML;
+
+    document.body.innerHTML = `<div class="id-card" style="margin: 50px auto; display:block;">${cardContent}</div>`;
+    window.print();
+   
+    document.body.innerHTML = originalContent;
+    location.reload(); 
+}
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.onclick = function(e) {
     e.preventDefault();
