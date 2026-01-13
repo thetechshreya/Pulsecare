@@ -23,28 +23,32 @@
             height: 100%;
             width: 0; 
             position: fixed;
-            z-index: 4000; 
+            z-index: 4000;
             top: 0;
             left: 0;
-            background-color: #222;
+            background: linear-gradient(180deg, #111 0%, #0052FF 100%);
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
         }
+
         .sidebar a {
             padding: 15px 30px;
             text-decoration: none;
-            font-size: 22px;
-            color: #818181;
+            font-size: 18px;
+            color: #e0e0e0;
             display: block;
-            transition: 0.3s;
+            transition: all 0.3s;
+            border-left: 5px solid transparent; 
         }
 
         .sidebar a:hover {
-            color: #f1f1f1;
-            background-color: #0052FF;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid white; 
+            padding-left: 40px; 
         }
-
         .sidebar .closebtn {
             position: absolute;
             top: 10px;
