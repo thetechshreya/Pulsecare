@@ -182,6 +182,35 @@
             color: var(--accent-blue);
             font-weight: bold;
         }
+        .health-card-section {
+            text-align: center;
+            padding: 40px;
+            background: #f0f4ff;
+            margin: 20px;
+            border-radius: 20px;
+        }
+
+        .id-card {
+            width: 350px;
+            height: 200px;
+            background: linear-gradient(135deg, #0052FF 0%, #002e8f 100%);
+            color: white;
+            margin: 20px auto;
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+
+        .card-header {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(228, 11, 11, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
         .footer-links a {
             color: #00d4ff; 
@@ -414,6 +443,18 @@
     </div>
 
 </div>
+<div class="health-card-section">
+    <h2>🆔 Generate Your Health Card</h2>
+    <input type="text" id="userNameInput" placeholder="Enter your full name...">
+    <button onclick="generateCard()" class="book-btn">Create My Card</button>
+
+    <div id="idCard" class="id-card" style="display: none;">
+        <div class="card-header">Pulsecare-AI Member</div>
+        <h3 id="displayName">Name</h3>
+        <p>Member ID: <span id="displayID">#0000</span></p>
+        <p>Status: <span style="color: #28a745;">● Active</span></p>
+    </div>
+</div>
 <footer class ="main-footer">
     <div class="footer-content">
         <p>&copy; 2026 Pulsecare-AI. Built by <span class="my-name">Shreya Maurya</span></p>
@@ -509,6 +550,21 @@ list.forEach((doctor, index) => {
     container.appendChild(card);
 });
 }
+function generateCard() {
+    const name = document.getElementById('userNameInput').value;
+    if (name.trim() === "") {
+        alert("Please enter a name first!");
+        return;
+    }
+    document.getElementById('idCard').style.display = "block";
+
+    document.getElementById('displayName').innerText = name;
+    
+    const randomID = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('displayID').innerText = "#" + randomID;
+
+    confetti({ particleCount: 50, spread: 50 });
+}
 
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.onclick = function(e) {
@@ -581,6 +637,7 @@ function toggleSidebar() {
         sidebar.style.width = "250px";
     }
 }
+
 
     </script>
  
