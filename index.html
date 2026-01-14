@@ -74,6 +74,16 @@
             z-index: 1000;
             
          }
+        .clock-style {
+            font-family: 'Courier New', Courier, monospace; 
+            background: #d1d4dd;
+            color: #0052FF;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #53d3f3;
+            box-shadow: #00d4ff;
+        }
         body.dark-mode .navbar{
             background-color: #ffffff;
         }
@@ -422,6 +432,7 @@
             <li><a href="#appointmentList">Appointment</a></li>
             <li> <a href="#" id="theme-toggle">🌙Dark Mode</a></li>
         </ul>
+        <div id="live-clock" class="clock-style">00:00:00</div>
     </nav>
     <h1>Welcome to Pulsecare-AI </h1>
     <p>I am building my first project!</p>
@@ -679,7 +690,14 @@ function toggleSidebar() {
         sidebar.style.width = "250px";
     }
 }
+function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+    document.getElementById('live-clock').innerText = timeString;
+}
 
+setInterval(updateClock, 1000);
+updateClock(); 
 
     </script>
  
