@@ -4,23 +4,23 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(125deg, #f0f4ff, #e6eeff, #ffffff, #eef2ff);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            transition: background 0.5s ease;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8faff;
+            background-image: radial-gradient(at 0% 0%, hsla(221,100%,90%,1) 0, transparent 50%), 
+                            radial-gradient(at 50% 0%, hsla(220,100%,95%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            transition: all 0.5s ease;
         }
-
-        @keyframes gradientBG {
+         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
         body.dark-mode {
-            background: linear-gradient(125deg, #0a0a0a, #001a4d, #000d1a);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
-            color: white;
+            background-color: #050505;
+            background-image: radial-gradient(at 0% 0%, hsla(225, 100%, 15%, 1) 0, transparent 50%), 
+                            radial-gradient(at 100% 0%, hsla(250, 100%, 10%, 1) 0, transparent 50%);
+            color: #e0e0e0;
         }
         .bg-decor {
             position: fixed;
@@ -153,26 +153,46 @@
             color:#0052FF;
         }
         .doctor-card {
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
             padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); 
-            transition: all 0.3s ease; 
-            border-color: rgb(199, 197, 207);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        body.dark-mode .doctor-card {
+            background: rgba(20, 20, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
         .doctor-card:hover {
-            transform: translateY(-10px); 
-            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2); 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 15px 45px rgba(0, 82, 255, 0.2);
         }
+            
         .doctor-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             padding: 40px;
+        }
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(0, 82, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 82, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 82, 255, 0); }
+        }
+
+        .find-btn {
+            animation: pulse-blue 2s infinite;
+        }
+
+        .find-btn:active {
+            transform: scale(0.95); 
         }
         .book-btn {
             background-color: #0052FF;
@@ -547,7 +567,6 @@
         { name: "Dr. Sara", specialty: "Dermatologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
         { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 },
         { name: "Dr. Raj", specialty: "Heartspecialist", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 },
-        { name: "Dr. Raj", specialty: "Pediatrician", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200",rating:3 }
         ];
     
         function displayDoctors() {
