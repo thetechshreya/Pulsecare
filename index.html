@@ -10,6 +10,7 @@
                             radial-gradient(at 50% 0%, hsla(220,100%,95%,1) 0, transparent 50%);
             background-attachment: fixed;
             transition: all 0.5s ease;
+            color: #0052FF;
         }
          @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -20,7 +21,14 @@
             background-color: #050505;
             background-image: radial-gradient(at 0% 0%, hsla(225, 100%, 15%, 1) 0, transparent 50%), 
                             radial-gradient(at 100% 0%, hsla(250, 100%, 10%, 1) 0, transparent 50%);
-            color: #e0e0e0;
+            color: #0052FF; 
+            text-shadow: 0 0 10px rgba(0, 82, 255, 0.5), 0 0 20px rgba(139, 169, 233, 0.2);
+        }
+      
+        body.dark-mode  h1 {
+            color: #0052FF; 
+            text-shadow: 0 0 10px rgba(0, 82, 255, 0.5), 0 0 20px rgba(0, 82, 255, 0.2);
+          
         }
         .bg-decor {
             position: fixed;
@@ -158,9 +166,40 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 195px;
+            min-height: 4px;
+            padding: 2px;
+            text-align: center;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .doctor-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover; 
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid #c4ebf5;
+        }
+        
+        .doctor-card h2 { color: #1a1a1a; margin: 10px 0; }
+        .doctor-card p { color: #444; font-size: 0.9rem; }
+
+
+        body.dark-mode .doctor-card h2 {
+            color: #ffffff; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .doctor-card p {
+            color: #b0b0b0; 
+        }
+
+        body.dark-mode .stars {
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); 
         }
 
         body.dark-mode .doctor-card {
@@ -200,6 +239,8 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 3cm;
+        
         }
         img {
             height: 100px;
@@ -415,6 +456,12 @@
                 margin: 40px 0;
                 text-align: center;
             }
+            body.dark-mode .quiz-section {
+                background: rgba(0, 82, 255, 0.05);
+                border: 2px solid #0052FF;
+                box-shadow: 0 0 20px rgba(0, 82, 255, 0.4); 
+                transition: all 0.5s ease;
+            }
 
             .quiz-options {
                 display: flex;
@@ -465,7 +512,7 @@
                 left: 0;
                 top: 0;
             }
-        }    
+        }  
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
