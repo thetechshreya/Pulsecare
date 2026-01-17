@@ -11,6 +11,7 @@
             background-attachment: fixed;
             transition: all 0.5s ease;
             color: #0052FF;
+            text-align: center;
         }
          @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -23,6 +24,7 @@
                             radial-gradient(at 100% 0%, hsla(250, 100%, 10%, 1) 0, transparent 50%);
             color: #0052FF; 
             text-shadow: 0 0 10px rgba(0, 82, 255, 0.5), 0 0 20px rgba(139, 169, 233, 0.2);
+            text-align: center;
         }
       
         body.dark-mode  h1 {
@@ -36,7 +38,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -1;  
             overflow: hidden;
         }
 
@@ -449,7 +451,42 @@
                 border-radius: 5px;
                 font-weight: bold;
             }
-            .quiz-section {
+            .clinic-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .clinic-card {
+                background: rgba(255, 255, 255, 0.1); 
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0, 82, 255, 0.2);
+                border-radius: 15px;
+                width: 300px;
+                padding: 15px;
+                transition: 0.3s;
+            }
+
+            .clinic-card:hover {
+                border-color: #0052FF;
+                box-shadow: 0 0 15px rgba(0, 82, 255, 0.3);
+            }
+
+            .map-link {
+                display: inline-block;
+                margin-top: 10px;
+                color: #0052FF;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            body.dark-mode .clinic-card {
+                background: rgba(20, 20, 30, 0.8);
+                color: white;
+            }
+                        .quiz-section {
                 background: #eef2ff;
                 padding: 30px;
                 border-radius: 15px;
@@ -512,7 +549,11 @@
                 left: 0;
                 top: 0;
             }
-        }  
+        } 
+        .clinic-section{
+            text-align: center;
+           
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -553,6 +594,15 @@
     <h1>Welcome to Pulsecare-AI </h1>
     <p>I am building my first project!</p>
     <button class="find-btn">Find a Doctor</button>
+    <section class="clinic-section">
+        <h2>📍 Nearby Clinics & Hospitals</h2>
+        <div class="search-box">
+            <input type="text" id="citySearch" placeholder="Enter your city or zip code...">
+            <button onclick="locateClinics()" class="book-btn">Search Nearby</button>
+        </div>
+        
+        <div id="clinic-results" class="clinic-grid"></div>
+    </section>
     <div class ="search-section">
         <input type="text" id="doctorSearch" placeholder="Search by specialty(e.g. Cardiologist)....">
 
@@ -813,6 +863,35 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock(); 
+const clinics = [
+    { name: "City General Hospital", city: "New York", address: "123 Health Ave", map: "https://www.google.com/maps" },
+    { name: "Blue Cross Clinic", city: "London", address: "45 Medical Lane", map: "https://www.google.com/maps" },
+    { name: "Sunrise Wellness Center", city: "New York", address: "78 Wellness Rd", map: "https://www.google.com/maps" }
+];
+
+function locateClinics() {
+    const input = document.getElementById('citySearch').value.toLowerCase();
+    const resultsContainer = document.getElementById('clinic-results');
+    resultsContainer.innerHTML = ""; 
+
+    const filtered = clinics.filter(c => c.city.toLowerCase().includes(input));
+
+    if (filtered.length === 0) {
+        resultsContainer.innerHTML = "<p>No clinics found in that city. Try 'New York' or 'London'.</p>";
+        return;
+    }
+
+    filtered.forEach(clinic => {
+        resultsContainer.innerHTML += `
+            <div class="clinic-card" style="animation: fadeInUp 0.5s ease;">
+                <h3>🏥 ${clinic.name}</h3>
+                <p>📍 ${clinic.address}</p>
+                <p>🌆 ${clinic.city}</p>
+                <a href="${clinic.map}" target="_blank" class="map-link">View on Google Maps →</a>
+            </div>
+        `;
+    });
+}
 
     </script>
  
