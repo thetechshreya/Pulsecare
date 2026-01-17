@@ -559,7 +559,7 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Pulsecare-AI</title>
 </head>
-<body>
+<body class="dark-mode">
     <div class="bg-decor">
     <div class="circle c1"></div>
     <div class="circle c2"></div>
@@ -658,6 +658,10 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script> 
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+        }
         const doctorData = [
         { name: "Dr. Aisha Sharma", specialty: "Cardiologist", image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200",rating:5 },
         { name: "Dr. Aryan Khan", specialty: "Neurologist", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200",rating:4 },
