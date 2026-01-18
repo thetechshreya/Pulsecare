@@ -329,6 +329,53 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+        /* Contact Form */
+        .contact-section {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 82, 255, 0.3);
+        }
+
+        .contact-section input, .contact-section textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #444;
+            color: white;
+            border-radius: 8px;
+        }
+
+        /* Floating Chat */
+        .chat-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0052FF;
+            color: rgb(95, 31, 138);
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 82, 255, 0.4);
+            z-index: 5000;
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 300px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            z-index: 5000;
+            border: 1px solid #333;
+        }
 
         .footer-links a {
             color: #00d4ff; 
@@ -646,6 +693,29 @@
         <button onclick="downloadCard()" class="reminder-btn" style="background: white; color: #0052FF; margin-top: 10px;">💾 Save/Print Card</button>
     </div>
 </div>
+<section class="contact-section">
+    <h2>📩 Get in Touch</h2>
+    <form id="contactForm" onsubmit="handleContact(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="How can we help you?"></textarea>
+        <button type="submit" class="book-btn">Send Message</button>
+    </form>
+</section>
+
+<div class="chat-float" onclick="toggleChat()">
+    💬 <span class="chat-text">Live Support</span>
+</div>
+
+<div id="chat-box" class="chat-window">
+    <div class="chat-header">Pulsecare Support <span onclick="toggleChat()" style="cursor:pointer">×</span></div>
+    <div class="chat-body">
+        <p>👋 Hello! How can we assist you today?</p>
+    </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Type a message...">
+    </div>
+</div>
 <footer class ="main-footer">
     <div class="footer-content">
         <p>&copy; 2026 Pulsecare-AI. Built by <span class="my-name">Shreya Maurya</span></p>
@@ -849,6 +919,17 @@ function softResetQuiz() {
             <button onclick="checkHealth(3, 1)">6+ Glasses</button>
         </div>
     `;
+}
+
+function handleContact(event) {
+    event.preventDefault();
+    alert("🚀 Message Sent! Our team will contact you soon.");
+    event.target.reset();
+}
+
+function toggleChat() {
+    const chat = document.getElementById('chat-box');
+    chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
 }
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
