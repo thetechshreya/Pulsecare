@@ -1,58 +1,92 @@
 body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f8faff;
-            background-image: radial-gradient(at 0% 0%, hsla(221,100%,90%,1) 0, transparent 50%), 
-                            radial-gradient(at 50% 0%, hsla(220,100%,95%,1) 0, transparent 50%);
-            background-attachment: fixed;
-            transition: all 0.5s ease;
-            color: #0052FF;
-            text-align: center;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8faff;
+        background-image: radial-gradient(at 0% 0%, hsla(221,100%,90%,1) 0, transparent 50%), 
+                        radial-gradient(at 50% 0%, hsla(220,100%,95%,1) 0, transparent 50%);
+        background-attachment: fixed;
+        transition: all 0.5s ease;
+        color: #0052FF;
+        text-align: center;
         }
-         @keyframes gradientBG {
+@keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        body.dark-mode {
-            background-color: #050505;
-            background-image: radial-gradient(at 0% 0%, hsla(225, 100%, 15%, 1) 0, transparent 50%), 
-                            radial-gradient(at 100% 0%, hsla(250, 100%, 10%, 1) 0, transparent 50%);
-            color: #0052FF; 
-            text-shadow: 0 0 10px rgba(0, 82, 255, 0.5), 0 0 20px rgba(139, 169, 233, 0.2);
-            text-align: center;
-        }
-      
-        body.dark-mode  h1 {
-            color: #0052FF; 
-            text-shadow: 0 0 10px rgba(0, 82, 255, 0.5), 0 0 20px rgba(0, 82, 255, 0.2);
-          
-        }
-        .bg-decor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;  
-            overflow: hidden;
-        }
+body.dark-mode {
+        background-color: #050505 !important;
+        background-image: radial-gradient(at 0% 0%, hsla(221, 100%, 10%, 1) 0, transparent 50%), 
+                        radial-gradient(at 50% 0%, hsla(220, 100%, 5%, 1) 0, transparent 50%) !important;
+        color: #ffffff !important;
+}
+body.dark-mode h1 {
+    color: #0052FF;
+    text-shadow: 0 0 10px rgba(0, 82, 255, 0.5), 0 0 20px rgba(0, 82, 255, 0.2);
+}
 
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(0, 82, 255, 0.1);
-            filter: blur(50px);
-            animation: float 20s infinite alternate;
-        }
+body.dark-mode .doctor-card {
+        background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(0, 82, 255, 0.3) !important;
+        backdrop-filter: blur(10px);
+}
 
-        .c1 { width: 400px; height: 400px; top: -100px; right: -100px; }
-        .c2 { width: 300px; height: 300px; bottom: -50px; left: -50px; animation-delay: -5s; }
+body.dark-mode .doctor-card h2, 
+body.dark-mode .doctor-card p {
+    color: #ffffff !important;
+}
 
-        @keyframes float {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(50px, 100px) scale(1.2); }
-        }
+body.dark-mode input, 
+body.dark-mode textarea {
+    background: #1a1a1a !important;
+    color: white !important;
+    border: 1px solid #0052FF !important;
+}
+
+body.dark-mode .chat-window {
+    background: #121212 !important;
+    border: 1px solid #0052FF !important;
+}
+
+body.dark-mode .chat-body {
+    color: white !important;
+}
+
+body.dark-mode .navbar {
+   background-color: #111 !important;
+      border: 1px solid rgba(0, 82, 255, 0.3) !important;  
+    box-shadow: 0 2px 10px rgba(0, 82, 255, 0.2);
+}
+
+body.dark-mode .nav-links a {
+    color: #ffffff !important;
+}
+
+.bg-decor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;  
+        overflow: hidden;
+}
+
+.circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(0, 82, 255, 0.1);
+        filter: blur(50px);
+        animation: float 20s infinite alternate;
+}
+
+.c1 { width: 400px; height: 400px; top: -100px; right: -100px; }
+.c2 { width: 300px; height: 300px; bottom: -50px; left: -50px; animation-delay: -5s; }
+
+@keyframes float {
+        from { transform: translate(0, 0) scale(1); }
+        to { transform: translate(50px, 100px) scale(1.2); }
+}
         .hamburger {
             display: flex; 
             flex-direction: column;
@@ -77,7 +111,7 @@ body {
             z-index: 4000;
             top: 0;
             left: 0;
-            background: linear-gradient(180deg, #111 0%, #0052FF 100%);
+            background: linear-gradient(180deg, #111 0%, #0052FF 100%,);
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -106,13 +140,8 @@ body {
             right: 25px;
                 font-size: 36px;
             }
-        body.dark-mode {
-            filter: invert(1) hue-rotate(180deg);
-            background-color: #1a1a1a;
-        }
-        body.dark-mode img{
-            filter : invert(1) hue-rotate(180deg);
-        }
+          
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -134,9 +163,6 @@ body {
             font-weight: bold;
             border: 1px solid #53d3f3;
             box-shadow: #00d4ff;
-        }
-        body.dark-mode .navbar{
-            background-color: #ffffff;
         }
         .logo {
             font-size: 24px;
@@ -180,32 +206,10 @@ body {
             object-fit: cover; 
             border-radius: 50%;
             margin: 0 auto 15px;
-            border: 3px solid #c4ebf5;
-        }
-        
-        .doctor-card h2 { color: #1a1a1a; margin: 10px 0; }
-        .doctor-card p { color: #444; font-size: 0.9rem; }
+            border: 3px solid #c4ebf500;
+        }        
 
-
-        body.dark-mode .doctor-card h2 {
-            color: #ffffff; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        body.dark-mode .doctor-card p {
-            color: #b0b0b0; 
-        }
-
-        body.dark-mode .stars {
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); 
-        }
-
-        body.dark-mode .doctor-card {
-            background: rgba(20, 20, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
-
+       
         .doctor-card:hover {
             transform: translateY(-10px) scale(1.02); 
             box-shadow: 0 15px 45px rgba(0, 82, 255, 0.2);
@@ -273,6 +277,14 @@ body {
             background: #f9f9f9;
             border-radius: 15px;
         }
+        
+        body.dark-mode .booking-section  {
+                background: rgba(0, 82, 255, 0.05);
+                border: 1px solid #0b2a6d;
+                box-shadow: 0 0 20px rgba(0, 82, 255, 0.4); 
+                transition: all 0.5s ease;
+
+        }
 
         .appointment-ticket {
             background: white;
@@ -284,12 +296,17 @@ body {
             justify-content: space-between;
             align-items: center;
         }
+
+        body.dark-mode .appointment-ticket {
+               background: #13039c67;
+            border: 1px solid #06087c; 
+            border-left: 5px solid #075c1b; 
+            box-shadow: 0 0 20px rgba(48, 21, 170, 0.486); 
+
+        }
         :root{
             --accent-blue: #0052FF;
             --footer-link-color: #ffffff
-        }
-        body.dark-mode .main-footer {
-            filter: invert(1) hue-rotate(180deg);
         }
 
         .my-name {
@@ -302,6 +319,13 @@ body {
             background: #f0f4ff;
             margin: 20px;
             border-radius: 20px;
+        }
+         body.dark-mode  .health-card-section  {
+                background: rgba(0, 82, 255, 0.05);
+                border: 1px solid #0b2a6d;
+                box-shadow: 0 0 20px rgba(0, 82, 255, 0.4); 
+                transition: all 0.5s ease;
+
         }
 
         .id-card {
@@ -396,7 +420,7 @@ body {
             overflow-y: auto;
         }
         body.dark-mode .chat-body {
-    color: white;
+            color: white;
 }
 
         .chat-footer input {
@@ -500,25 +524,29 @@ body {
                 justify-content: space-between;
                 align-items: center;
             }
-            /* The Reminder Box */
-            .reminder-popup {
-                position: fixed;
-                bottom: 20px;
-                left: 20px; 
-                background-color: #0052FF;
-                color: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                transition: right 0.5s ease-in-out; 
-                z-index: 9998;
-                max-width: 250px;
-                display: none;
-            }
-            .reminder-popup.show {
-              display: block;
-    animation: fadeInUp 0.5s ease;
-            }
+        .reminder-popup {
+    position: fixed; 
+    bottom: 20px;
+    left: 20px; 
+    background-color: #0052FF;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 9999; 
+    max-width: 280px;
+    display: none; 
+}
+
+.reminder-popup.show {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
             .reminder-btn {
                 background: white;
