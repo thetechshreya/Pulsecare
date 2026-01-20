@@ -84,6 +84,23 @@ list.forEach((doctor, index) => {
     container.appendChild(card);
 });
 }
+function filterDoctors(category) {
+    const cards = document.querySelectorAll('.doctor-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    cards.forEach(card => {
+        const specialty = card.querySelector('p').innerText;
+        if (category === 'all' || specialty.includes(category)) {
+            card.style.display = "flex";
+            card.style.opacity = "1";
+        } else {
+            card.style.display = "none";
+            card.style.opacity = "0";
+        }
+    });
+}
 function generateCard() {
     const name = document.getElementById('userNameInput').value;
     if (name.trim() === "") {
