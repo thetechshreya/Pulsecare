@@ -463,6 +463,35 @@ body.dark-mode .nav-links a {
             background: rgba(255,255,255,0.05);
             color: white;
         }
+        .testimonials {
+    padding: 60px 20px;
+    background: rgba(0, 82, 255, 0.03);
+}
+
+.testimonial-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    height: 200px; 
+}
+
+.testimonial-card {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.8s ease;
+    transform: translateY(20px);
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.dark-mode .testimonial-card p {
+    color: #e0e0e0;
+    font-style: italic;
+}
 
         .footer-links a {
             color: #00d4ff; 
