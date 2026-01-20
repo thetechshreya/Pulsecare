@@ -85,6 +85,7 @@
     </div>
 
 </div>
+
 <div class="health-card-section">
     <h2>🆔 Generate Your Health Card</h2>
     <input type="text" id="userNameInput" placeholder="Enter your full name...">
@@ -104,7 +105,9 @@
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
         <textarea placeholder="How can we help you?"></textarea>
-        <button type="submit" class="book-btn">Send Message</button>
+        <button id="sendBtn" class="book-btn" onclick="handleSubmission('sendBtn')">
+    Send Message
+</button>
     </form>
 </section>
 

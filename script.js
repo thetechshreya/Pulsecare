@@ -97,7 +97,12 @@ function generateCard() {
     const randomID = Math.floor(1000 + Math.random() * 9000);
     document.getElementById('displayID').innerText = "#" + randomID;
 
-    confetti({ particleCount: 50, spread: 50 });
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#0052FF', '#ffffff', '#00d4ff']
+    });
 }
 function downloadCard() {
 
@@ -249,6 +254,25 @@ function locateClinics() {
         `;
     });
 }
+function handleSubmission(buttonId) {
+    const btn = document.getElementById(buttonId);
 
+
+    btn.classList.add('btn-loading');
+    const originalText = btn.innerText;
+    btn.innerText = ""; 
+
+    setTimeout(() => {
+        btn.classList.remove('btn-loading');
+        btn.classList.add('btn-success');
+        btn.innerText = "✓ Sent!";
+        
+        
+        setTimeout(() => {
+            btn.classList.remove('btn-success');
+            btn.innerText = originalText;
+        }, 2000);
+    }, 1000);
+}
  
 
