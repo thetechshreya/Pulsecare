@@ -348,8 +348,8 @@ body.dark-mode .nav-links a {
         }
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 90px;
+            right: 25px;
             display: none; 
             background-color: #0052FF;
             color: white;
@@ -358,20 +358,60 @@ body.dark-mode .nav-links a {
             border-radius: 50%;
             cursor: pointer;
             font-size: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgb(16, 75, 114);
             transition: transform 0.3s, background-color 0.3s;
-            z-index: 5000; 
+            z-index: 9999; 
         }
 
         .back-to-top:hover {
             background-color: #003db3;
             transform: scale(1.1);
         }
+        .back-to-top::after {
+            content: "Go to Top";
+            position: absolute;
+            bottom: 125%; 
+            right: 50%;
+            transform: translateX(50%);
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            pointer-events: none; 
+        }
+
+        .back-to-top:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top::before {
+            content: "";
+            position: absolute;
+            bottom: 110%;
+            right: 50%;
+            transform: translateX(50%);
+            border: 6px solid transparent;
+            border-top-color: #333;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+        }
+
+        .back-to-top:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
 
 
         body.dark-mode .back-to-top {
-            background-color: #00d4ff;
-            color: #050505;
+            background-color: #0052FF;
+            color: #fdfdfd;
         }
         .health-card-section {
             text-align: center;
