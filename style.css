@@ -346,6 +346,33 @@ body.dark-mode .nav-links a {
             color: var(--accent-blue);
             font-weight: bold;
         }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none; 
+            background-color: #0052FF;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+            z-index: 5000; 
+        }
+
+        .back-to-top:hover {
+            background-color: #003db3;
+            transform: scale(1.1);
+        }
+
+
+        body.dark-mode .back-to-top {
+            background-color: #00d4ff;
+            color: #050505;
+        }
         .health-card-section {
             text-align: center;
             padding: 40px;

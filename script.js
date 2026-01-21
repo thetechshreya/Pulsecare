@@ -93,6 +93,21 @@ function showNextReview() {
     reviews[currentReview].classList.add('active');
 }
 setInterval(showNextReview, 4000);
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+backToTopBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
 function filterDoctors(category) {
     const cards = document.querySelectorAll('.doctor-card');
     const buttons = document.querySelectorAll('.filter-btn');
