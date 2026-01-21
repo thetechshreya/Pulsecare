@@ -84,6 +84,15 @@ list.forEach((doctor, index) => {
     container.appendChild(card);
 });
 }
+let currentReview = 0;
+const reviews = document.querySelectorAll('.testimonial-card');
+
+function showNextReview() {
+    reviews[currentReview].classList.remove('active');
+    currentReview = (currentReview + 1) % reviews.length;
+    reviews[currentReview].classList.add('active');
+}
+setInterval(showNextReview, 4000);
 function filterDoctors(category) {
     const cards = document.querySelectorAll('.doctor-card');
     const buttons = document.querySelectorAll('.filter-btn');
