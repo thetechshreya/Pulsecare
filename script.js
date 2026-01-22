@@ -315,5 +315,29 @@ function handleSubmission(buttonId) {
         }, 2000);
     }, 1000);
 }
+function saveUserName() {
+    const nameInput = document.querySelector('input[placeholder*="name"]');
+    
+    if (nameInput && nameInput.value) {
+        const name = nameInput.value;
+    
+        localStorage.setItem("pulsecare_visitor_name", name)
+        updateChatGreeting(name);
+    }
+}
+
+function updateChatGreeting(name) {
+    const chatBody = document.querySelector('.chat-body');
+    if (chatBody) {
+        chatBody.innerHTML = `<p>👋 Hello <strong>${name}</strong>! How can we assist you today?</p>`;
+    }
+}
+
+window.addEventListener('load', () => {
+    const savedName = localStorage.getItem("pulsecare_visitor_name");
+    if (savedName) {
+        updateChatGreeting(savedName);
+    }
+});
  
 

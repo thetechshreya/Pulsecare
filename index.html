@@ -98,7 +98,7 @@
 <div class="health-card-section">
     <h2>🆔 Generate Your Health Card</h2>
     <input type="text" id="userNameInput" placeholder="Enter your full name...">
-    <button onclick="generateCard()" class="book-btn">Create My Card</button>
+    <button onclick="generateCard(); saveUserName();" class="book-btn">Create My Card</button>
 
     <div id="idCard" class="id-card" style="display: none;">
         <div class="card-header">Pulsecare-AI Member</div>
@@ -108,6 +108,7 @@
         <button onclick="downloadCard()" class="reminder-btn" style="background: white; color: #0052FF; margin-top: 10px;">💾 Save/Print Card</button>
     </div>
 </div>
+
 <section class="contact-section">
     <h2>📩 Get in Touch</h2>
     <form id="contactForm" onsubmit="handleContact(event)">
@@ -133,6 +134,8 @@
         <input type="text" placeholder="Type a message...">
     </div>
 </div>
+
+
 <section class="testimonials">
     <h2>What Our Patients Say</h2>
     <div class="testimonial-container">
