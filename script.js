@@ -145,6 +145,27 @@ function generateCard() {
         colors: ['#0052FF', '#ffffff', '#00d4ff']
     });
 }
+function previewImage(event) {
+    const reader = new FileReader();
+    
+    reader.onload = function() {
+        const output = document.getElementById('card-photo');
+        output.src = reader.result;
+        
+        localStorage.setItem("user_card_image", reader.result);
+    };
+    
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
+
+window.addEventListener('load', () => {
+    const savedImg = localStorage.getItem("user_card_image");
+    if (savedImg) {
+        document.getElementById('card-photo').src = savedImg;
+    }
+});
 function updateCardDate() {
     const dateElement = document.getElementById('last-updated');
     const now = new Date();

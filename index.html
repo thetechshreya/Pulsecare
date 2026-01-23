@@ -96,11 +96,14 @@
 </div>
 
 <div class="health-card-section">
+   
     <h2>🆔 Generate Your Health Card</h2>
+         <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="previewImage(event)">
+    
+    <button class="book-btn" onclick="document.getElementById('imageUpload').click()">Choose Photo</button><br><br>
     <input type="text" id="userNameInput" placeholder="Enter your full name...">
     <button onclick="generateCard(); saveUserName();" class="book-btn">Create My Card</button>
-
-    <div id="idCard" class="id-card" style="display: none;">
+   <div id="idCard" class="id-card" style="display: none;">
         <div class="card-header">Pulsecare-AI Member</div>
         <div class="card-photo-frame">
             <img id="card-photo" src="https://via.placeholder.com/100" alt="Profile">
@@ -114,7 +117,6 @@
         <button onclick="downloadCard()" class="reminder-btn" style="background: white; color: #0052FF; margin-top: 10px;">💾 Save/Print Card</button>
     </div>
 </div>
-
 
 <section class="contact-section">
     <h2>📩 Get in Touch</h2>
