@@ -137,7 +137,7 @@ function generateCard() {
     
     const randomID = Math.floor(1000 + Math.random() * 9000);
     document.getElementById('displayID').innerText = "#" + randomID;
-
+    updateCardDate();
     confetti({
         particleCount: 150,
         spread: 70,
@@ -145,6 +145,24 @@ function generateCard() {
         colors: ['#0052FF', '#ffffff', '#00d4ff']
     });
 }
+function updateCardDate() {
+    const dateElement = document.getElementById('last-updated');
+    const now = new Date();
+
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-US', options);
+
+    dateElement.innerText = formattedDate;
+    
+    localStorage.setItem("card_last_updated", formattedDate);
+}
+
+window.addEventListener('load', () => {
+    const savedDate = localStorage.getItem("card_last_updated");
+    if (savedDate) {
+        document.getElementById('last-updated').innerText = savedDate;
+    }
+});
 function downloadCard() {
 
     const cardContent = document.getElementById('idCard').innerHTML;
