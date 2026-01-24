@@ -22,6 +22,7 @@
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
             <a href="#" onclick="toggleSidebar()">Home</a>
+            <a href='#about'>About Us</a>
             <a href="#doctorSearch" onclick="toggleSidebar()">Find Doctors</a>
             <a href="#appointmentList" onclick="toggleSidebar()">My Appointments</a>
             <a href="#quiz-container" onclick="toggleSidebar()">Health Quiz</a>
@@ -41,13 +42,40 @@
         <div class="logo">Pulsecare-AI 🏥</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
+            <li><a href="#about">About Us</a></li>
             <li><a href="#appointmentList">Appointment</a></li>
             <li> <a href="#" id="theme-toggle">🌙Dark Mode</a></li>
         </ul>
         <div id="live-clock" class="clock-style">00:00:00</div>
     </nav>
-    <h1>Welcome to Pulsecare-AI </h1>
-    <p>I am building my first project!</p>
+    <section id="about" class="about-section">
+    <div class="about-content">
+        <h1>Welcome to Pulsecare-AI </h1>
+        <p>PulseCare-AI is designed to bridge the gap between technology and healthcare. We believe that managing your medical identity should be as simple as a single click.</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="icon">🆔</span>
+                <h3>Digital Health ID</h3>
+                <p>Create a personalized medical card with your photo and ID to streamline clinic check-ins.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🔍</span>
+                <h3>Specialist Finder</h3>
+                <p>Search and filter through top-rated doctors based on their specialty and expertise.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">💬</span>
+                <h3>AI Support</h3>
+                <p>Get instant guidance through our 24/7 live support system.</p>
+            </div>
+        </div>
+        
+        <blockquote class="importance-note">
+            "Your health data, your control. PulseCare-AI makes healthcare accessible, organized, and modern."
+        </blockquote>
+    </div>
+</section>
     <button class="find-btn">Find a Doctor</button>
     <section class="clinic-section">
         <h2>📍 Nearby Clinics & Hospitals</h2>

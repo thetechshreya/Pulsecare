@@ -71,6 +71,9 @@ body.dark-mode .nav-links a {
         z-index: -1;  
         overflow: hidden;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 .circle {
         position: absolute;
@@ -184,6 +187,55 @@ body.dark-mode .nav-links a {
         .nav-links a:hover{
             color:#0052FF;
         }
+        .about-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(0, 82, 255, 0.02);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0052FF;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .importance-note {
+            margin-top: 50px;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-left: 4px solid #0052FF;
+            padding-left: 20px;
+            display: inline-block;
+        }
+
+
+        body.dark-mode .feature-item {
+            background: #1a1a1a;
+            color: white;
+        }
+        body.dark-mode .importance-note {
+            color: #aaa;
+        }
         .doctor-card {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(10px); 
@@ -229,6 +281,7 @@ body.dark-mode .nav-links a {
         }
 
         .find-btn {
+            
             animation: pulse-blue 2s infinite;
         }
 
