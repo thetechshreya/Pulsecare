@@ -100,7 +100,12 @@
     <h2>🆔 Generate Your Health Card</h2>
          <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="previewImage(event)">
     
-    <button class="book-btn" onclick="document.getElementById('imageUpload').click()">Choose Photo</button><br><br>
+    <div class="upload-controls">
+    <button id="uploadBtn" class="book-btn" onclick="document.getElementById('imageUpload').click()">
+        Choose Photo
+    </button>
+    <span id="uploadStatus" class="upload-badge">✓ Photo Selected!</span>
+</div><br>
     <input type="text" id="userNameInput" placeholder="Enter your full name...">
     <button onclick="generateCard(); saveUserName();" class="book-btn">Create My Card</button>
    <div id="idCard" class="id-card" style="display: none;">

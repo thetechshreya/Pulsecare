@@ -147,17 +147,31 @@ function generateCard() {
 }
 function previewImage(event) {
     const reader = new FileReader();
+    const uploadBtn = document.getElementById('uploadBtn');
+    const statusText = document.getElementById('uploadStatus');
     
     reader.onload = function() {
         const output = document.getElementById('card-photo');
         output.src = reader.result;
         
         localStorage.setItem("user_card_image", reader.result);
+        
+        uploadBtn.classList.add('upload-success');
+        uploadBtn.innerText = "Photo Ready!";
+
+        statusText.style.display = "inline";
     };
     
     if (event.target.files[0]) {
         reader.readAsDataURL(event.target.files[0]);
     }
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#0052FF', '#28a745', '#ffffff'],
+            zIndex: 9999 
+        })
 }
 
 window.addEventListener('load', () => {
