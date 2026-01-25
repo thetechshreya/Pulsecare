@@ -22,7 +22,7 @@
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
             <a href="#" onclick="toggleSidebar()">Home</a>
-            <a href='#about'>About Us</a>
+          <a href="javascript:void(0)" onclick="showAbout()">About Us</a>
             <a href="#doctorSearch" onclick="toggleSidebar()">Find Doctors</a>
             <a href="#appointmentList" onclick="toggleSidebar()">My Appointments</a>
             <a href="#quiz-container" onclick="toggleSidebar()">Health Quiz</a>
@@ -42,12 +42,14 @@
         <div class="logo">Pulsecare-AI 🏥</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#about">About Us</a></li>
+            <li><a href="javascript:void(0)" onclick="showAbout()">About Us</a></li>
+             <li><a href="#about">About Us</a></li>
             <li><a href="#appointmentList">Appointment</a></li>
             <li> <a href="#" id="theme-toggle">🌙Dark Mode</a></li>
         </ul>
         <div id="live-clock" class="clock-style">00:00:00</div>
     </nav>
+    <div id="home-page">
     <section id="about" class="about-section">
     <div class="about-content">
         <h1>Welcome to Pulsecare-AI </h1>
@@ -204,7 +206,24 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script src="script.js"></script>   
+<script src="script.js"></script> 
+</div>
+<div id="about-page" style="display: none; padding: 50px; background-color: #000c24; color: white; min-height: 100vh;">
+    
+    <button onclick="showHome()" class="back-btn">← Back to Home</button>
+
+    <div class="about-content">
+        <h1>Welcome to PulseCare-AI</h1>
+        <p>This is where you tell the user why this app is important...</p>
+        
+        <h3>What you can do here:</h3>
+        <ul>
+            <li>Generate an AI Health Card</li>
+            <li>Find specialists near you</li>
+            <li>Get 24/7 AI Support</li>
+        </ul>
+    </div>
+</div> 
 </body>
 </html>
         

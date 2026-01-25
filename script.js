@@ -392,5 +392,21 @@ window.addEventListener('load', () => {
         updateChatGreeting(savedName);
     }
 });
- 
+function showAbout() {
 
+    document.getElementById('home-page').style.display = 'none';
+    
+
+    document.getElementById('about-page').style.display = 'block';
+    
+    
+    window.scrollTo(0, 0);
+}
+
+function showHome() {
+    
+    document.getElementById('home-page').style.display = 'block';
+    document.getElementById('about-page').style.display = 'none';
+    
+    window.scrollTo(0, 0);
+}

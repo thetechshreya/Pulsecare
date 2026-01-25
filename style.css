@@ -920,3 +920,29 @@ body.dark-mode .testimonial-card p {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+#about-page {
+    padding: 50px 20px;
+    min-height: 100vh;
+    animation: fadeIn 0.5s ease;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background: #0052FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
