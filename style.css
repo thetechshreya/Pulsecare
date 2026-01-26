@@ -258,6 +258,52 @@ html {
             margin-bottom: 10px;
             font-size: 1.5rem;
 }
+.creator-section {
+    margin-top: 80px;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.separator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, #0052FF, transparent);
+    margin-bottom: 40px;
+    opacity: 0.5;
+}
+
+.creator-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 30px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.creator-info h4 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: #0052FF;
+    margin-bottom: 10px;
+}
+
+.github-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #24292e; 
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.github-link:hover {
+    transform: scale(1.05);
+    background: #333;
+}
         .doctor-card {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(10px); 
