@@ -393,20 +393,33 @@ window.addEventListener('load', () => {
     }
 });
 function showAbout() {
+    const home = document.getElementById('home-page');
+    const about = document.getElementById('about-page');
 
-    document.getElementById('home-page').style.display = 'none';
+    home.style.display = 'none';
+    about.style.display = 'block';
     
-
-    document.getElementById('about-page').style.display = 'block';
-    
+    about.classList.add('fade-in');
     
     window.scrollTo(0, 0);
 }
 
 function showHome() {
+    const home = document.getElementById('home-page');
+    const about = document.getElementById('about-page');
+
+    about.style.display = 'none';
+    home.style.display = 'block';
     
-    document.getElementById('home-page').style.display = 'block';
-    document.getElementById('about-page').style.display = 'none';
+    
+    home.classList.add('fade-in');
     
     window.scrollTo(0, 0);
+    
+    
+    setTimeout(() => {
+        home.classList.remove('fade-in');
+        about.classList.remove('fade-in');
+    }, 500);
 }
+

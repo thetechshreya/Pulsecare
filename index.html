@@ -43,36 +43,17 @@
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="javascript:void(0)" onclick="showAbout()">About Us</a></li>
-             <li><a href="#about">About Us</a></li>
+            
             <li><a href="#appointmentList">Appointment</a></li>
             <li> <a href="#" id="theme-toggle">🌙Dark Mode</a></li>
         </ul>
         <div id="live-clock" class="clock-style">00:00:00</div>
     </nav>
-    <div id="home-page">
+      <div id="home-page">
     <section id="about" class="about-section">
     <div class="about-content">
         <h1>Welcome to Pulsecare-AI </h1>
         <p>PulseCare-AI is designed to bridge the gap between technology and healthcare. We believe that managing your medical identity should be as simple as a single click.</p>
-        
-        <div class="features-grid">
-            <div class="feature-item">
-                <span class="icon">🆔</span>
-                <h3>Digital Health ID</h3>
-                <p>Create a personalized medical card with your photo and ID to streamline clinic check-ins.</p>
-            </div>
-            <div class="feature-item">
-                <span class="icon">🔍</span>
-                <h3>Specialist Finder</h3>
-                <p>Search and filter through top-rated doctors based on their specialty and expertise.</p>
-            </div>
-            <div class="feature-item">
-                <span class="icon">💬</span>
-                <h3>AI Support</h3>
-                <p>Get instant guidance through our 24/7 live support system.</p>
-            </div>
-        </div>
-        
         <blockquote class="importance-note">
             "Your health data, your control. PulseCare-AI makes healthcare accessible, organized, and modern."
         </blockquote>
@@ -208,21 +189,58 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script src="script.js"></script> 
 </div>
-<div id="about-page" style="display: none; padding: 50px; background-color: #000c24; color: white; min-height: 100vh;">
-    
-    <button onclick="showHome()" class="back-btn">← Back to Home</button>
 
-    <div class="about-content">
-        <h1>Welcome to PulseCare-AI</h1>
-        <p>This is where you tell the user why this app is important...</p>
+<section id="about-page" style="display: none; padding: 100px 20px; background: #000c24; min-height: 100vh;">
+    <div class="about-container" style="max-width: 900px; margin: 0 auto; color: white;">
+        <button onclick="showHome()" class="back-btn">← Back to PulseCare</button>
+        <h1 style="font-size: 3.5rem; color: #0052FF;">Our Vision</h1>
+        <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 20px;">
+           PulseCare-AI is more than just a tool; it's a bridge to the future of healthcare. 
+           We use AI to ensure your medical identity is always in your pocket.
+        </p>
+           <div class="features-grid">
+            <div class="feature-item">
+                <span class="icon">🆔</span>
+                <h3>Digital Health ID</h3>
+                <p>Create a personalized medical card with your photo and ID to streamline clinic check-ins.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🔍</span>
+                <h3>Specialist Finder</h3>
+                <p>Search and filter through top-rated doctors based on their specialty and expertise.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">💬</span>
+                <h3>AI Support</h3>
+                <p>Get instant guidance through our 24/7 live support system.</p>
+            </div>
+        </div>
         
-        <h3>What you can do here:</h3>
-        <ul>
-            <li>Generate an AI Health Card</li>
-            <li>Find specialists near you</li>
-            <li>Get 24/7 AI Support</li>
-        </ul>
+        <blockquote class="importance-note">
+            "Your health data, your control. PulseCare-AI makes healthcare accessible, organized, and modern."
+        </blockquote>
+                </div>
+                <div class="big-features">
+                <div>
+                    <h3>🚀 Speed</h3>
+                    <p>Instantly generate health cards without waiting at clinic desks.</p>
+                </div><br>
+                <div>
+                    <h3>🛡️ Security</h3>
+                    <p>Your data is stored locally on your device, giving you total control.</p>
+                </div>
+            </div>
+                    <h1>Mission & Vision</h1>
+        <p>PulseCare-AI was born from the idea that healthcare should be accessible to everyone, everywhere...</p>
+        
+        <div class="stats-row">
+            <div class="stat-card"><h3>100%</h3><p>Secure</p></div>
+            <div class="stat-card"><h3>24/7</h3><p>AI Support</p></div>
+            <div class="stat-card"><h3>Free</h3><p>Health ID</p></div>
+        </div>
     </div>
+</section>
+    
 </div> 
 </body>
 </html>

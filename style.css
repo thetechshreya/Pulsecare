@@ -236,6 +236,28 @@ html {
         body.dark-mode .importance-note {
             color: #aaa;
         }
+        .big-features > div {
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 82, 255, 0.2);
+            transition: all 0.3s ease; 
+            cursor: default;
+        }
+
+        
+        .big-features > div:hover {
+            background: rgba(0, 82, 255, 0.1); 
+            border-color: #0052FF;
+            transform: translateY(-5px); 
+            box-shadow: 0 0 20px rgba(0, 82, 255, 0.6), 0 0 40px rgba(0, 82, 255, 0.2);
+        }
+
+        .big-features h3 {
+            color: #0052FF;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+}
         .doctor-card {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(10px); 
@@ -945,4 +967,24 @@ body.dark-mode .testimonial-card p {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeInSlide 0.5s ease forwards;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+#about-page {
+    transition: opacity 0.5s ease;
 }
