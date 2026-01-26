@@ -21,8 +21,8 @@
 </div>
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
-            <a href="#" onclick="toggleSidebar()">Home</a>
-          <a href="javascript:void(0)" onclick="showAbout()">About Us</a>
+            <a href="javascript:void(0)" onclick="goToHome()">Home</a>
+           <a href="javascript:void(0)" onclick="showAbout()">About Us</a>
             <a href="#doctorSearch" onclick="toggleSidebar()">Find Doctors</a>
             <a href="#appointmentList" onclick="toggleSidebar()">My Appointments</a>
             <a href="#quiz-container" onclick="toggleSidebar()">Health Quiz</a>
@@ -39,9 +39,11 @@
     <button class="reminder-btn" onclick="closeReminder()">Got it!</button>
 </div>
     <nav class ="navbar">
-        <div class="logo">Pulsecare-AI 🏥</div>
+        <div class="logo" onclick="goToHome()" style="cursor: pointer;">
+    PulseCare-AI 🏥
+</div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+            <a href="javascript:void(0)" onclick="goToHome()">Home</a>
             <li><a href="javascript:void(0)" onclick="showAbout()">About Us</a></li>
             
             <li><a href="#appointmentList">Appointment</a></li>
@@ -246,7 +248,6 @@
         <div class="creator-info">
             <h4>Developed by</h4>
             <h2>Shreya Maurya</h2>
-            
             <p>A passionate developer building the future of digital health.</p>
             <div class="creator-links">
                 <a href="https://github.com/thetechshreya" target="_blank" class="github-link">

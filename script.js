@@ -422,4 +422,15 @@ function showHome() {
         about.classList.remove('fade-in');
     }, 500);
 }
+function goToHome() {
+    console.log("Navigating to Home...");
 
+    document.getElementById('home-page').style.display = 'block';
+    
+    
+    document.getElementById('about-page').style.display = 'none';
+
+    window.scrollTo(0, 0);
+    
+
+}
