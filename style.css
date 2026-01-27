@@ -152,8 +152,8 @@ html {
     background: rgba(126, 128, 221, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(72, 74, 240, 0.1);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 40px;
     max-width: 700px;
     margin: 0 auto;
     box-shadow: 0 6px 20px rgba(38, 45, 146, 0.2);
@@ -169,7 +169,9 @@ html {
     display: block;
     margin-bottom: 15px;
 }
-
+#health-quote, #quote-author {
+    transition: opacity 0.5s ease-in-out;
+}
 #health-quote {
     font-size: 1.2rem;
     font-style: italic;
@@ -184,22 +186,6 @@ html {
     letter-spacing: 1px;
 }
 
-.refresh-quote-btn {
-    margin-top: 20px;
-    background: transparent;
-    border: 1px solid #0052FF;
-    color: #0052FF;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.3s;
-}
-
-.refresh-quote-btn:hover {
-    background: #0052FF;
-    color: white;
-}
         
         .navbar {
             display: flex;

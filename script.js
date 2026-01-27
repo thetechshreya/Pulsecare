@@ -437,24 +437,33 @@ function goToHome() {
 const healthTips = [
     { text: "Your body hears everything your mind says. Stay positive.", author: "Naomi Judd" },
     { text: "Drink a glass of water first thing every morning.", author: "Wellness Tip" },
-    { text: "Sleep is the greatest legal performance enhancing drug.", author: "Dr. Matthew Walker" },
+    { text: "Sleep is the greatest performance enhancing drug.", author: "Dr. Matthew Walker" },
     { text: "Take a 10-minute walk outside; your mind will thank you.", author: "Health Tip" },
     { text: "Self-care is not selfish. You cannot pour from an empty cup.", author: "Eleanor Brown" }
 ];
 
-function getNewQuote() {
+let currentQuoteIndex = 0;
+
+function rotateQuotes() {
     const quoteElement = document.getElementById('health-quote');
     const authorElement = document.getElementById('quote-author');
     
-    
-    const randomIndex = Math.floor(Math.random() * healthTips.length);
-    const selected = healthTips[randomIndex];
+    if (!quoteElement || !authorElement) return;
 
-    
     quoteElement.style.opacity = 0;
+    authorElement.style.opacity = 0;
+
     setTimeout(() => {
+
+        currentQuoteIndex = (currentQuoteIndex + 1) % healthTips.length;
+        const selected = healthTips[currentQuoteIndex];
+
         quoteElement.innerText = `"${selected.text}"`;
         authorElement.innerText = `— ${selected.author}`;
+    
         quoteElement.style.opacity = 1;
-    }, 300);
+        authorElement.style.opacity = 1;
+    }, 500); 
 }
+
+setInterval(rotateQuotes, 4000);
