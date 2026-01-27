@@ -143,7 +143,63 @@ html {
             right: 25px;
                 font-size: 36px;
             }
-          
+          .quote-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.quote-container {
+    background: rgba(126, 128, 221, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(72, 74, 240, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 6px 20px rgba(38, 45, 146, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.quote-container:hover {
+    transform: scale(1.02);
+}
+
+.quote-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+#health-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #e0e0e0;
+}
+
+#quote-author {
+    color: #0052FF;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.refresh-quote-btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #0052FF;
+    color: #0052FF;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+.refresh-quote-btn:hover {
+    background: #0052FF;
+    color: white;
+}
         
         .navbar {
             display: flex;
@@ -316,6 +372,7 @@ html {
     animation: none; 
     transform: scale(1.1);
 }
+
         .doctor-card {
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(10px); 
