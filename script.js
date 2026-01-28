@@ -447,23 +447,40 @@ let currentQuoteIndex = 0;
 function rotateQuotes() {
     const quoteElement = document.getElementById('health-quote');
     const authorElement = document.getElementById('quote-author');
+    const iconElement = document.querySelector('.quote-icon'); // Target the icon
     
-    if (!quoteElement || !authorElement) return;
+    // Simple logic to pick an icon based on words in the tip
+    const icons = {
+        "water": "💧",
+        "sleep": "🌙",
+        "walk": "👟",
+        "mind": "🧠",
+        "care": "❤️",
+        "default": "✨"
+    };
 
     quoteElement.style.opacity = 0;
     authorElement.style.opacity = 0;
 
     setTimeout(() => {
-
         currentQuoteIndex = (currentQuoteIndex + 1) % healthTips.length;
         const selected = healthTips[currentQuoteIndex];
 
+        // Pick icon
+        let icon = icons.default;
+        for (let key in icons) {
+            if (selected.text.toLowerCase().includes(key)) {
+                icon = icons[key];
+            }
+        }
+
         quoteElement.innerText = `"${selected.text}"`;
         authorElement.innerText = `— ${selected.author}`;
-    
+        iconElement.innerText = icon; // Update the emoji
+
         quoteElement.style.opacity = 1;
         authorElement.style.opacity = 1;
-    }, 500); 
+    }, 500);
 }
 
 setInterval(rotateQuotes, 4000);

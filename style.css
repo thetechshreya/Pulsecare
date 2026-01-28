@@ -158,6 +158,35 @@ html {
     margin: 0 auto;
     box-shadow: 0 6px 20px rgba(38, 45, 146, 0.2);
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: float 6s ease-in-out infinite;
+}
+.quote-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(0, 82, 255, 0.05), 
+        rgba(0, 82, 255, 0.2), 
+        transparent
+    );
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
 .quote-container:hover {
