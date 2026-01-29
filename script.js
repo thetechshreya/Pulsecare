@@ -447,9 +447,9 @@ let currentQuoteIndex = 0;
 function rotateQuotes() {
     const quoteElement = document.getElementById('health-quote');
     const authorElement = document.getElementById('quote-author');
-    const iconElement = document.querySelector('.quote-icon'); // Target the icon
+    const iconElement = document.querySelector('.quote-icon'); 
     
-    // Simple logic to pick an icon based on words in the tip
+    
     const icons = {
         "water": "💧",
         "sleep": "🌙",
@@ -466,7 +466,7 @@ function rotateQuotes() {
         currentQuoteIndex = (currentQuoteIndex + 1) % healthTips.length;
         const selected = healthTips[currentQuoteIndex];
 
-        // Pick icon
+        
         let icon = icons.default;
         for (let key in icons) {
             if (selected.text.toLowerCase().includes(key)) {
@@ -476,7 +476,7 @@ function rotateQuotes() {
 
         quoteElement.innerText = `"${selected.text}"`;
         authorElement.innerText = `— ${selected.author}`;
-        iconElement.innerText = icon; // Update the emoji
+        iconElement.innerText = icon; 
 
         quoteElement.style.opacity = 1;
         authorElement.style.opacity = 1;
@@ -484,3 +484,39 @@ function rotateQuotes() {
 }
 
 setInterval(rotateQuotes, 4000);
+function searchByDoctor() {
+    
+    let input = document.getElementById('doctorSearch').value.toLowerCase();
+    
+    
+    let cards = document.getElementsByClassName('doctor-card');
+
+    for (let i = 0; i < cards.length; i++) {
+        
+        let docName = cards[i].querySelector('h2').innerText.toLowerCase();
+
+
+        if (docName.includes(input)) {
+            cards[i].style.display = ""; 
+            cards[i].classList.add('fade-in'); 
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+function filterSpecialty(specialty) {
+    let cards = document.getElementsByClassName('doctor-card');
+    let input = document.getElementById('doctorSearch');
+
+    input.value = ""; 
+
+    for (let i = 0; i < cards.length; i++) {
+        let docSpecialty = cards[i].querySelector('.specialty-text').innerText.toLowerCase();
+        
+        if (specialty === 'all' || docSpecialty.includes(specialty.toLowerCase())) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
