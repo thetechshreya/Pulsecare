@@ -1118,3 +1118,26 @@ body.dark-mode .testimonial-card p {
 #about-page {
     transition: opacity 0.5s ease;
 }
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.status-available { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
+.status-offline { background: rgba(255, 255, 255, 0.1); color: #888; }
+
+.dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+.dot-online { background: #00ff88; box-shadow: 0 0 5px #00ff88; animation: pulse 2s infinite; }
+.dot-offline { background: #888; }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}

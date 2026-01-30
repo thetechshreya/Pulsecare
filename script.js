@@ -29,60 +29,74 @@ btn.onclick = function() {
         alert("Doctors list updated!");
     }, 1000); 
 };
-    function renderFilteredDoctors(list) {
+ function renderFilteredDoctors(list) {
     const container = document.querySelector('.doctor-container');
-    container.innerHTML = ""; 
-list.forEach((doctor, index) => { 
-    const card = document.createElement('div');
-    card.className = 'doctor-card';
-    
-    
-    card.innerHTML = `
-        <img src="${doctor.image}" alt="${doctor.name}">
-        <h2>${doctor.name}</h2>
-        <p>${doctor.specialty}</p>
-        <div class="stars">${"⭐".repeat(doctor.rating)}</div>
-        <button class="book-btn" id="book-btn-${index}">Book Appointment</button>
-    `;
+    if (!container) {
+        console.error("Error: .doctor-container not found in HTML!");
+        return;
+    }
 
-    const bookBtn = card.querySelector('.book-btn');
+    container.innerHTML = ""; // Clear existing
+    console.log("Rendering doctors list...", list);
 
-    bookBtn.onclick = function() {
-        alert(`✅ Appointment Confirmed with ${doctor.name}!`);
+    const hour = new Date().getHours();
+    const isAvailable = hour >= 9 && hour < 20;
+
+    list.forEach((doctor, index) => { 
+        const card = document.createElement('div');
+        card.className = 'doctor-card';
         
-        const listArea = document.getElementById('appointmentList');
-        const emptyMsg = document.getElementById('empty-msg');
-        if (emptyMsg) { emptyMsg.remove(); }
+        const statusClass = isAvailable ? 'status-available' : 'status-offline';
+        const dotClass = isAvailable ? 'dot-online' : 'dot-offline';
+        const statusText = isAvailable ? 'Available' : 'Offline';
 
-        const ticket = document.createElement('div');
-        ticket.className = 'appointment-ticket';
-        ticket.innerHTML = `
-            <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
-            <button class="delete-btn" title="Cancel Appointment">&times;</button>
+        // Carefully check the backticks (`) and ${} variables below
+        card.innerHTML = `
+            <div class="status-badge ${statusClass}">
+                <span class="dot ${dotClass}"></span>
+                ${statusText}
+            </div>
+            <img src="${doctor.image}" alt="${doctor.name}">
+            <h2>${doctor.name}</h2>
+            <p>${doctor.specialty}</p>
+            <div class="stars">${"⭐".repeat(doctor.rating)}</div>
+            <button class="book-btn" id="book-btn-${index}">Book Appointment</button>
         `;
-        const deleteBtn = ticket.querySelector('.delete-btn');
-        deleteBtn.onclick = function() {
-            ticket.remove();
+
+        // RE-ATTACH YOUR BOOKING LOGIC
+        const bookBtn = card.querySelector('.book-btn');
+        bookBtn.onclick = function() {
+            alert(`✅ Appointment Confirmed with ${doctor.name}!`);
             
+            const listArea = document.getElementById('appointmentList');
+            const emptyMsg = document.getElementById('empty-msg');
+            if (emptyMsg) { emptyMsg.remove(); }
 
-            bookBtn.innerText = "Book Appointment";
-            bookBtn.style.backgroundColor = "#0052FF"; 
-            bookBtn.disabled = false;
+            const ticket = document.createElement('div');
+            ticket.className = 'appointment-ticket';
+            ticket.innerHTML = `
+                <span><strong>${doctor.name}</strong> - ${doctor.specialty}</span>
+                <button class="delete-btn" title="Cancel Appointment">&times;</button>
+            `;
 
-            if (listArea.children.length === 0) {
-                listArea.innerHTML = '<p id="empty-msg">No appointments booked yet.</p>';
-            }
+            ticket.querySelector('.delete-btn').onclick = function() {
+                ticket.remove();
+                bookBtn.innerText = "Book Appointment";
+                bookBtn.style.backgroundColor = "#0052FF"; 
+                bookBtn.disabled = false;
+                if (listArea.children.length === 0) {
+                    listArea.innerHTML = '<p id="empty-msg">No appointments booked yet.</p>';
+                }
+            };
+
+            listArea.appendChild(ticket);
+            bookBtn.innerText = "Booked";
+            bookBtn.style.backgroundColor = "#28a745";
+            bookBtn.disabled = true;
         };
 
-        listArea.appendChild(ticket);
-
-        bookBtn.innerText = "Booked";
-        bookBtn.style.backgroundColor = "#28a745";
-        bookBtn.disabled = true; 
-    };
-
-    container.appendChild(card);
-});
+        container.appendChild(card);
+    });
 }
 let currentReview = 0;
 const reviews = document.querySelectorAll('.testimonial-card');
