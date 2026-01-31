@@ -68,6 +68,29 @@
         <small id="quote-author">— World Health Organization</small>
     </div>
 </section>
+<div class="stats-container">
+    <div class="stat-card">
+        <span class="stat-icon">❤️</span>
+        <div class="stat-info">
+            <label>Heart Rate</label>
+            <p><span id="bpm-val">72</span> BPM</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">🩸</span>
+        <div class="stat-info">
+            <label>Blood Pressure</label>
+            <p>120/80</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">😴</span>
+        <div class="stat-info">
+            <label>Sleep</label>
+            <p>7h 20m</p>
+        </div>
+    </div>
+</div>
     <button class="find-btn">Find a Doctor</button>
     <section class="clinic-section">
         <h2>📍 Nearby Clinics & Hospitals</h2>
@@ -79,8 +102,7 @@
         <div id="clinic-results" class="clinic-grid"></div>
     </section>
     <div class ="search-section">
-       <input type="text" id="doctorSearch" placeholder="Search for a doctor by name (e.g. Aisha)..." onkeyup="searchByDoctor()">
-
+   <input type="text" id="doctorSearch" placeholder="Search for a doctor by name (e.g. Aisha)..." oninput="searchByDoctor()">
     </div>
     <div id="loader" class="loader"></div>
     <div class="filter-section">

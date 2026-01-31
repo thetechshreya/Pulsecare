@@ -29,6 +29,19 @@ btn.onclick = function() {
         alert("Doctors list updated!");
     }, 1000); 
 };
+function simulatePulse() {
+    const bpmElement = document.getElementById('bpm-val');
+    if (!bpmElement) return;
+
+    setInterval(() => {
+
+        const randomBPM = Math.floor(Math.random() * (75 - 70 + 1)) + 70;
+        bpmElement.innerText = randomBPM;
+    }, 3000);
+}
+
+// Call it once
+simulatePulse();
  function renderFilteredDoctors(list) {
     const container = document.querySelector('.doctor-container');
     if (!container) {
@@ -36,12 +49,11 @@ btn.onclick = function() {
         return;
     }
 
-    container.innerHTML = ""; // Clear existing
+    container.innerHTML = ""; 
     console.log("Rendering doctors list...", list);
-
+    
     const hour = new Date().getHours();
     const isAvailable = hour >= 9 && hour < 20;
-
     list.forEach((doctor, index) => { 
         const card = document.createElement('div');
         card.className = 'doctor-card';
@@ -50,7 +62,7 @@ btn.onclick = function() {
         const dotClass = isAvailable ? 'dot-online' : 'dot-offline';
         const statusText = isAvailable ? 'Available' : 'Offline';
 
-        // Carefully check the backticks (`) and ${} variables below
+    
         card.innerHTML = `
             <div class="status-badge ${statusClass}">
                 <span class="dot ${dotClass}"></span>
@@ -63,7 +75,7 @@ btn.onclick = function() {
             <button class="book-btn" id="book-btn-${index}">Book Appointment</button>
         `;
 
-        // RE-ATTACH YOUR BOOKING LOGIC
+    
         const bookBtn = card.querySelector('.book-btn');
         bookBtn.onclick = function() {
             alert(`✅ Appointment Confirmed with ${doctor.name}!`);

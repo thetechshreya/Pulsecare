@@ -1141,3 +1141,46 @@ body.dark-mode .testimonial-card p {
     50% { opacity: 0.5; }
     100% { opacity: 1; }
 }
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    background: rgba(0, 82, 255, 0.1);
+    border-color: #0052FF;
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+}
+
+.stat-info label {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-info p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+}
