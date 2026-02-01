@@ -579,3 +579,47 @@ function filterSpecialty(specialty) {
         }
     }
 }
+const myMeds = [
+    { id: 1, name: "Vitamin D3", time: "08:00 AM", taken: false },
+    { id: 2, name: "Omega 3", time: "12:00 PM", taken: false },
+    { id: 3, name: "Magnesium", time: "09:00 PM", taken: false }
+];
+
+function renderMeds() {
+    const listContainer = document.getElementById('meds-list');
+    listContainer.innerHTML = "";
+
+    myMeds.forEach(med => {
+        const medDiv = document.createElement('div');
+        medDiv.className = `med-item ${med.taken ? 'completed' : ''}`;
+        medDiv.onclick = () => toggleMed(med.id);
+
+        medDiv.innerHTML = `
+            <div class="checkbox-custom">${med.taken ? '✓' : ''}</div>
+            <div class="med-info">
+                <div style="font-weight: bold;">${med.name}</div>
+                <div style="font-size: 0.75rem; color: #888;">${med.time}</div>
+            </div>
+        `;
+        listContainer.appendChild(medDiv);
+    });
+
+    updateMedProgress();
+}
+
+function toggleMed(id) {
+    const med = myMeds.find(m => m.id === id);
+    med.taken = !med.taken;
+    renderMeds();
+}
+
+function updateMedProgress() {
+    const completedCount = myMeds.filter(m => m.taken).length;
+    const total = myMeds.length;
+    const percentage = (completedCount / total) * 100;
+
+    document.getElementById('meds-progress-bar').style.width = percentage + "%";
+    document.getElementById('meds-count').innerText = `${completedCount}/${total} Completed`;
+}
+
+renderMeds();

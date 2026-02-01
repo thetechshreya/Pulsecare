@@ -1210,3 +1210,69 @@ body.dark-mode .testimonial-card p {
     color: #555;
     margin-top: 5px;
 }
+.meds-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.meds-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+#meds-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #0052FF, #00ff88);
+    transition: width 0.5s ease;
+}
+
+.med-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.med-item:hover { background: rgba(255, 255, 255, 0.08); }
+
+.med-item.completed {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0052FF;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+}
+
+.completed .checkbox-custom {
+    background: #0052FF;
+    border-color: #0052FF;
+}
