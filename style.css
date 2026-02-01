@@ -1184,3 +1184,29 @@ body.dark-mode .testimonial-card p {
     font-weight: bold;
     margin: 0;
 }
+.welcome-section {
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+
+#greeting-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #888;
+    margin: 0;
+}
+
+#user-display-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 5px 0;
+    background: linear-gradient(90deg, #fff, #0052FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.date-display {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 5px;
+}

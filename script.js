@@ -39,8 +39,41 @@ function simulatePulse() {
         bpmElement.innerText = randomBPM;
     }, 3000);
 }
+function updateGreeting() {
+    const now = new Date();
+    const hour = now.getHours();
+    const greetingElement = document.getElementById('greeting-text');
+    const dateElement = document.getElementById('current-date');
+    const nameElement = document.getElementById('user-display-name');
 
-// Call it once
+    
+    let message = "Good Night,";
+    if (hour >= 5 && hour < 12) message = "Good Morning,";
+    else if (hour >= 12 && hour < 17) message = "Good Afternoon,";
+    else if (hour >= 17 && hour < 21) message = "Good Evening,";
+    
+    greetingElement.innerText = message;
+
+    
+    const options = { weekday: 'long', month: 'short', day: 'numeric' };
+    dateElement.innerText = now.toLocaleDateString('en-US', options);
+
+    const savedName = localStorage.getItem('pulseUserName');
+    if (savedName) {
+        nameElement.innerText = savedName;
+    }
+}
+
+
+function changeName() {
+    const newName = prompt("What's your name?");
+    if (newName) {
+        localStorage.setItem('pulseUserName', newName);
+        document.getElementById('user-display-name').innerText = newName;
+    }
+}
+updateGreeting();
+
 simulatePulse();
  function renderFilteredDoctors(list) {
     const container = document.querySelector('.doctor-container');
