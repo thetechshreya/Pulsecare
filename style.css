@@ -1452,3 +1452,32 @@ body.dark-mode .testimonial-card p {
     font-weight: bold;
     opacity: 0.8;
 }
+.sleep-section {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 30px;
+}
+
+.sleep-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#sleep-score-pill {
+    background: #0052FF;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.circular-chart { display: block; margin: 10px auto; max-width: 120px; }
+.circle-bg { fill: none; stroke: #333; stroke-width: 2.8; }
+.circle { fill: none; stroke-width: 2.8; stroke-linecap: round; stroke: #0052FF; transition: stroke-dasharray 0.3s ease; }
+.sleep-circle { position: relative; width: 120px; margin: 0 auto; }
+.percentage { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; font-size: 1.2rem; }
+
+input[type=range] { width: 100%; cursor: pointer; accent-color: #0052FF; }

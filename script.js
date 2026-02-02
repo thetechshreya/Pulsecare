@@ -706,3 +706,23 @@ function logMood(emoji, label) {
     };
     localStorage.setItem('userMood', JSON.stringify(moodEntry));
 }
+function analyzeSleep() {
+    const hours = document.getElementById('sleep-range').value;
+    const hoursText = document.getElementById('hours-val');
+    const percentText = document.getElementById('sleep-percent');
+    const progressCircle = document.getElementById('sleep-progress');
+    const scorePill = document.getElementById('sleep-score-pill');
+
+    hoursText.innerText = hours;
+
+    
+    let score = (hours / 8) * 100;
+    if (score > 100) score = 100 - (score - 100); 
+
+    percentText.innerText = Math.floor(score) + "%";
+    progressCircle.setAttribute('stroke-dasharray', `${score}, 100`);
+
+    if (score > 85) { scorePill.innerText = "Optimal"; scorePill.style.background = "#00ff88"; }
+    else if (score > 60) { scorePill.innerText = "Fair"; scorePill.style.background = "#0052FF"; }
+    else { scorePill.innerText = "Poor"; scorePill.style.background = "#ff4b2b"; }
+}
