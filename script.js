@@ -726,3 +726,36 @@ function analyzeSleep() {
     else if (score > 60) { scorePill.innerText = "Fair"; scorePill.style.background = "#0052FF"; }
     else { scorePill.innerText = "Poor"; scorePill.style.background = "#ff4b2b"; }
 }
+// 1. Heart Rate Zone Logic
+function updateHRZones(bpm) {
+    document.getElementById('live-hr').innerText = bpm;
+    
+    document.querySelectorAll('.zone').forEach(z => z.classList.remove('active'));
+    
+
+    if (bpm < 100) document.getElementById('zone-1').classList.add('active');
+    else if (bpm < 130) document.getElementById('zone-2').classList.add('active');
+    else if (bpm < 160) document.getElementById('zone-3').classList.add('active');
+    else document.getElementById('zone-4').classList.add('active');
+}
+
+
+const noteArea = document.getElementById('doctor-notes');
+noteArea.addEventListener('input', () => {
+    localStorage.setItem('userHealthNotes', noteArea.value);
+    document.getElementById('save-status').innerText = "Saving...";
+    setTimeout(() => { document.getElementById('save-status').innerText = "Auto-saved"; }, 1000);
+});
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    const savedNotes = localStorage.getItem('userHealthNotes');
+    if (savedNotes) noteArea.value = savedNotes;
+});
+
+function clearNotes() {
+    if(confirm("Delete all notes?")) {
+        noteArea.value = "";
+        localStorage.removeItem('userHealthNotes');
+    }
+}
