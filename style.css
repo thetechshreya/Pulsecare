@@ -1481,3 +1481,25 @@ body.dark-mode .testimonial-card p {
 .percentage { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; font-size: 1.2rem; }
 
 input[type=range] { width: 100%; cursor: pointer; accent-color: #0052FF; }
+.hr-zone-section {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.hr-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hr-big-num { text-align: center; }
+.hr-big-num span { font-size: 3rem; font-weight: 800; color: #ff4b2b; display: block; }
+
+.hr-zones { display: flex; flex-direction: column; gap: 8px; width: 120px; }
+.zone { font-size: 0.7rem; color: #666; display: flex; justify-content: space-between; align-items: center; }
+.zone span { width: 40px; height: 6px; background: #333; border-radius: 10px; }
+.zone.active { color: #fff; font-weight: bold; }
+.zone.active span { background: #ff4b2b; box-shadow: 0 0 10px #ff4b2b; }
