@@ -651,3 +651,43 @@ function calculateBMI() {
         alert("Please enter valid numbers!");
     }
 }
+let currentWater = 0;
+const goal = 2000;
+
+function addWater(amount) {
+    if (currentWater < goal) {
+        currentWater += amount;
+        if (currentWater > goal) currentWater = goal;
+        updateWaterUI();
+    }
+    
+    if (currentWater === goal) {
+        alert("🎉 Awesome! You've reached your daily hydration goal!");
+    }
+}
+
+function updateWaterUI() {
+    const percent = Math.floor((currentWater / goal) * 100);
+    
+    document.getElementById('water-fill').style.height = percent + "%";
+    document.getElementById('water-percent').innerText = percent + "%";
+    document.getElementById('water-ml').innerText = currentWater;
+    
+    
+    localStorage.setItem('dailyWater', currentWater);
+}
+
+function resetWater() {
+    if(confirm("Start a new day?")) {
+        currentWater = 0;
+        updateWaterUI();
+    }
+}
+
+window.onload = () => {
+    const saved = localStorage.getItem('dailyWater');
+    if (saved) {
+        currentWater = parseInt(saved);
+        updateWaterUI();
+    }
+};
