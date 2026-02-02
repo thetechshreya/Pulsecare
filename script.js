@@ -673,7 +673,7 @@ function updateWaterUI() {
     document.getElementById('water-percent').innerText = percent + "%";
     document.getElementById('water-ml').innerText = currentWater;
     
-    
+
     localStorage.setItem('dailyWater', currentWater);
 }
 
@@ -683,7 +683,6 @@ function resetWater() {
         updateWaterUI();
     }
 }
-
 window.onload = () => {
     const saved = localStorage.getItem('dailyWater');
     if (saved) {
@@ -691,3 +690,19 @@ window.onload = () => {
         updateWaterUI();
     }
 };
+function logMood(emoji, label) {
+    const statusText = document.getElementById('mood-status');
+    
+    statusText.innerHTML = `You're feeling <strong>${label}</strong> today!`;
+    
+    const ping = new Audio('https://www.soundjay.com/buttons/button-16.mp3');
+    ping.play();
+
+    
+    const moodEntry = {
+        date: new Date().toLocaleDateString(),
+        mood: emoji,
+        status: label
+    };
+    localStorage.setItem('userMood', JSON.stringify(moodEntry));
+}

@@ -1414,3 +1414,41 @@ body.dark-mode .testimonial-card p {
     cursor: pointer;
     font-size: 0.8rem;
 }
+.mood-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mood-emojis {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.mood-btn {
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mood-btn:hover {
+    transform: scale(1.3) translateY(-5px);
+}
+
+.mood-btn:active {
+    transform: scale(0.9);
+}
+
+#mood-status {
+    font-size: 0.9rem;
+    color: #00ff88;
+    font-weight: bold;
+    opacity: 0.8;
+}
