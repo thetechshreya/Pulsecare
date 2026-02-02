@@ -107,6 +107,30 @@
     <div id="meds-list">
         </div>
 </div>
+<div class="bmi-section">
+    <h3>BMI Calculator</h3>
+    <div class="bmi-inputs">
+        <div class="input-group">
+            <label>Weight (kg)</label>
+            <input type="number" id="bmi-weight" placeholder="70">
+        </div>
+        <div class="input-group">
+            <label>Height (cm)</label>
+            <input type="number" id="bmi-height" placeholder="175">
+        </div>
+    </div>
+    <button onclick="calculateBMI()" class="calc-btn">Calculate Score</button>
+    
+    <div id="bmi-result-area" style="display: none;">
+        <div class="bmi-score-display">
+            <span id="bmi-num">22.5</span>
+            <p id="bmi-status">Normal</p>
+        </div>
+        <div class="bmi-bar">
+            <div id="bmi-indicator"></div>
+        </div>
+    </div>
+</div>
     <button class="find-btn">Find a Doctor</button>
     <section class="clinic-section">
         <h2>📍 Nearby Clinics & Hospitals</h2>

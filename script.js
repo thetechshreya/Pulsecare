@@ -623,3 +623,31 @@ function updateMedProgress() {
 }
 
 renderMeds();
+function calculateBMI() {
+    const weight = document.getElementById('bmi-weight').value;
+    const heightCm = document.getElementById('bmi-height').value;
+    const resultArea = document.getElementById('bmi-result-area');
+
+    if (weight > 0 && heightCm > 0) {
+        const heightM = heightCm / 100;
+        const bmi = (weight / (heightM * heightM)).toFixed(1);
+        
+        document.getElementById('bmi-num').innerText = bmi;
+        resultArea.style.display = "block";
+
+        let status = "";
+        let color = "";
+        let position = "";
+
+        if (bmi < 18.5) { status = "Underweight"; color = "#3498db"; position = "10%"; }
+        else if (bmi < 25) { status = "Normal"; color = "#2ecc71"; position = "35%"; }
+        else if (bmi < 30) { status = "Overweight"; color = "#f1c40f"; position = "60%"; }
+        else { status = "Obese"; color = "#e74c3c"; position = "85%"; }
+
+        document.getElementById('bmi-status').innerText = status;
+        document.getElementById('bmi-num').style.color = color;
+        document.getElementById('bmi-indicator').style.left = position;
+    } else {
+        alert("Please enter valid numbers!");
+    }
+}
