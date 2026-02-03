@@ -759,3 +759,38 @@ function clearNotes() {
         localStorage.removeItem('userHealthNotes');
     }
 }
+function generateReport() {
+    const reportArea = document.getElementById('report-print-area');
+    const name = localStorage.getItem('pulseUserName') || "Guest";
+    const bmi = document.getElementById('bmi-num').innerText || "N/A";
+    const sleep = document.getElementById('sleep-percent').innerText || "N/A";
+    const water = document.getElementById('water-ml').innerText || "0";
+    const notes = document.getElementById('doctor-notes').value || "No notes recorded.";
+    const date = new Date().toLocaleDateString();
+
+    reportArea.innerHTML = `
+        <div style="text-align:center">
+            <h1>PULSECARE</h1>
+            <p>Personal Health Summary | ${date}</p>
+        </div>
+        <hr>
+        <h3>Patient: ${name}</h3>
+        <div class="report-grid">
+            <div class="report-item"><label>BMI Score</label> ${bmi}</div>
+            <div class="report-item"><label>Sleep Quality</label> ${sleep}</div>
+            <div class="report-item"><label>Water Intake</label> ${water} ml / 2000 ml</div>
+            <div class="report-item"><label>Heart Rate</label> ${document.getElementById('live-hr').innerText} BPM</div>
+        </div>
+        <div style="margin-top:30px;">
+            <h4>Clinical Notes:</h4>
+            <p style="background:#f9f9f9; padding:15px; border-left:4px solid #0052FF;">${notes}</p>
+        </div>
+        <p style="font-size: 0.7rem; color: #888; margin-top: 40px;">* This report is generated automatically by PulseCare and is for informational purposes only.</p>
+    `;
+
+    document.getElementById('report-modal').style.display = "block";
+}
+
+function closeReport() {
+    document.getElementById('report-modal').style.display = "none";
+}

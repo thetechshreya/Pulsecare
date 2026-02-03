@@ -1534,3 +1534,27 @@ input[type=range] { width: 100%; cursor: pointer; accent-color: #0052FF; }
 }
 
 .notes-footer button { background: none; border: none; color: #ff4b2b; cursor: pointer; }
+.report-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(90deg, #0052FF, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Modal Styling */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+.modal-content { background: white; color: black; margin: 5% auto; padding: 40px; border-radius: 8px; width: 80%; max-width: 600px; }
+
+#report-print-area h2 { border-bottom: 2px solid #0052FF; padding-bottom: 10px; }
+.report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+.report-item { border-bottom: 1px solid #eee; padding: 10px 0; }
+.report-item label { font-weight: bold; color: #555; display: block; font-size: 0.8rem; }

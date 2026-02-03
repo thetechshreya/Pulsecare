@@ -279,7 +279,19 @@
         <button onclick="downloadCard()" class="reminder-btn" style="background: white; color: #0052FF; margin-top: 10px;">💾 Save/Print Card</button>
     </div>
 </div>
-
+<div class="report-section">
+    <button onclick="generateReport()" class="report-btn">
+        <span class="btn-icon">📄</span> Generate Health Summary
+    </button>
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReport()">&times;</span>
+            <div id="report-print-area">
+                </div>
+            <button onclick="window.print()" class="print-btn">Print / Save as PDF</button>
+        </div>
+    </div>
+</div>
 <section class="contact-section">
     <h2>📩 Get in Touch</h2>
     <form id="contactForm" onsubmit="handleContact(event)">
@@ -305,7 +317,6 @@
         <input type="text" placeholder="Type a message...">
     </div>
 </div>
-
 
 <section class="testimonials">
     <h2>What Our Patients Say</h2>
@@ -401,6 +412,7 @@
     </div>
 </div> 
 </section> 
+
 </div> 
 </body>
 </html>
