@@ -794,3 +794,43 @@ function generateReport() {
 function closeReport() {
     document.getElementById('report-modal').style.display = "none";
 }
+let sosTimer;
+const sosBtn = document.getElementById('sos-btn');
+
+function startSOS() {
+    sosBtn.style.transform = "scale(0.9)";
+    document.getElementById('sos-instruction').innerText = "Keep holding...";
+    
+    sosTimer = setTimeout(() => {
+        triggerSOS();
+    }, 3000); // 3 seconds hold time
+}
+
+function stopSOS() {
+    clearTimeout(sosTimer);
+    sosBtn.style.transform = "scale(1)";
+    document.getElementById('sos-instruction').innerText = "Hold 3s for Emergency";
+}
+
+function triggerSOS() {
+    document.getElementById('sos-overlay').style.display = "flex";
+    
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+            document.getElementById('gps-coords').innerText = 
+                `${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}`;
+        });
+    }
+
+    
+    const siren = new Audio('https://www.soundjay.com/misc/sounds/siren-01.mp3');
+    siren.loop = true;
+    siren.play();
+    window.currentSiren = siren;
+}
+
+function cancelSOS() {
+    document.getElementById('sos-overlay').style.display = "none";
+    if (window.currentSiren) window.currentSiren.pause();
+}

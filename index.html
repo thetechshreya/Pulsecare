@@ -228,12 +228,27 @@
 </div>
 <div class="doctor-container"></div>
     <div class="doctor-container"></div>
+    <div class="sos-container">
+    <button id="sos-btn" onmousedown="startSOS()" onmouseup="stopSOS()" onmouseleave="stopSOS()" ontouchstart="startSOS()" ontouchend="stopSOS()">
+        <div class="sos-ring"></div>
+        <span class="sos-text">SOS</span>
+    </button>
+    <p id="sos-instruction">Hold 3s for Emergency</p>
+</div>
+
+<div id="sos-overlay" class="sos-overlay">
+    <div class="sos-alert-box">
+        <h1>🚨 EMERGENCY ALERT 🚨</h1>
+        <p>Contacting Emergency Services...</p>
+        <p>Sharing GPS Location: <span id="gps-coords">Detecting...</span></p>
+        <button onclick="cancelSOS()" class="cancel-sos">CANCEL</button>
+    </div>
+</div>
     <div class="quiz-section">
     <h2>🧪 Quick Health Check</h2>
     <div class="progress-container">
         <div id="progress-bar" class="progress-fill"></div>
     </div>
-
     <div id="quiz-content">
         <p id="question">How many glasses of water do you drink daily?</p>
         <div class="quiz-options">
@@ -251,7 +266,6 @@
     </div>
 
 </div>
-
 <div class="health-card-section">
    
     <h2>🆔 Generate Your Health Card</h2>
@@ -303,7 +317,6 @@
 </button>
     </form>
 </section>
-
 <div class="chat-float" onclick="toggleChat()">
     💬 <span class="chat-text">Live Support</span>
 </div>
