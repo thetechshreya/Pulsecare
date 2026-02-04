@@ -1609,3 +1609,41 @@ input[type=range] { width: 100%; cursor: pointer; accent-color: #0052FF; }
     20% { transform: translate(-3px, 0px); }
     100% { transform: translate(1px, -1px); }
 }
+.vitals-graph-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.bar-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 150px;
+    padding-top: 20px;
+}
+
+.bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 15%;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(to top, #0052FF, #00c6ff);
+    border-radius: 6px;
+    transition: height 1s ease-out;
+    position: relative;
+}
+
+.bar:hover { filter: brightness(1.2); cursor: pointer; }
+
+.bar-wrapper span { font-size: 0.7rem; color: #666; }
+.active-bar {
+    background: linear-gradient(to top, #00ff88, #0052FF) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}

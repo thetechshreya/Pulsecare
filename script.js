@@ -834,3 +834,19 @@ function cancelSOS() {
     document.getElementById('sos-overlay').style.display = "none";
     if (window.currentSiren) window.currentSiren.pause();
 }
+function syncGraph() {
+    const todayBar = document.getElementById('today-bar');
+    
+    
+    let waterScore = (currentWater / 2000) * 50; 
+    if (waterScore > 50) waterScore = 50;
+
+    const sleepHours = document.getElementById('sleep-range').value;
+    let sleepScore = (sleepHours / 8) * 50; 
+    if (sleepScore > 50) sleepScore = 50;
+
+   
+    const totalScore = Math.floor(waterScore + sleepScore);
+
+    todayBar.style.height = totalScore + "%";
+}

@@ -73,6 +73,7 @@
     <h2 id="user-display-name" onclick="changeName()" style="cursor: pointer;">Guest</h2>
     <p class="date-display" id="current-date"></p>
 </div>
+
 <div class="stats-container">
     <div class="stat-card">
         <span class="stat-icon">❤️</span>
@@ -206,6 +207,22 @@
         </div>
     </div>
 </div><br>
+<div class="vitals-graph-card">
+    <div class="graph-header">
+        <h3>Live Health Score</h3>
+        <small>Real-time performance</small>
+    </div>
+    <div class="bar-chart">
+        <div class="bar-wrapper"><div class="bar" style="height: 60%;"></div><span>Mon</span></div>
+        <div class="bar-wrapper"><div class="bar" style="height: 85%;"></div><span>Tue</span></div>
+        <div class="bar-wrapper"><div class="bar" style="height: 40%;"></div><span>Wed</span></div>
+        <div class="bar-wrapper"><div class="bar" style="height: 70%;"></div><span>Thu</span></div>
+        <div class="bar-wrapper">
+            <div id="today-bar" class="bar active-bar" style="height: 10%;"></div>
+            <span>Today</span>
+        </div>
+    </div>
+</div>
     <button class="find-btn">Find a Doctor</button>
     <section class="clinic-section">
         <h2>📍 Nearby Clinics & Hospitals</h2>
