@@ -838,6 +838,7 @@ function syncGraph() {
     const todayBar = document.getElementById('today-bar');
     
     
+
     let waterScore = (currentWater / 2000) * 50; 
     if (waterScore > 50) waterScore = 50;
 
@@ -849,4 +850,19 @@ function syncGraph() {
     const totalScore = Math.floor(waterScore + sleepScore);
 
     todayBar.style.height = totalScore + "%";
+}
+function updateComp() {
+    const fatVal = document.getElementById('fat-input').value;
+    const muscleVal = document.getElementById('muscle-input').value;
+
+    const fatDegrees = (fatVal / 40) * 180;
+    document.getElementById('fat-gauge').style.background = 
+        `conic-gradient(#ff4b2b ${fatDegrees}deg, #333 ${fatDegrees}deg)`;
+
+    const muscleDegrees = (muscleVal / 100) * 180;
+    document.getElementById('muscle-gauge').style.background = 
+        `conic-gradient(#00ff88 ${muscleDegrees}deg, #333 ${muscleDegrees}deg)`;
+    
+    
+    syncGraph(); 
 }

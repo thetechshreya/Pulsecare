@@ -141,6 +141,28 @@
     <div id="meds-list">
         </div>
 </div>
+<div class="composition-section">
+    <h3>Body Composition</h3>
+    <div class="comp-grid">
+        <div class="comp-item">
+            <label>Body Fat</label>
+            <div class="semi-circle-container">
+                <div class="semi-circle" id="fat-gauge"></div>
+                <input type="number" id="fat-input" value="20" oninput="updateComp()">
+                <span>%</span>
+            </div>
+        </div>
+
+        <div class="comp-item">
+            <label>Muscle Mass</label>
+            <div class="semi-circle-container">
+                <div class="semi-circle" id="muscle-gauge"></div>
+                <input type="number" id="muscle-input" value="40" oninput="updateComp()">
+                <span>kg</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="bmi-section">
     <h3>BMI Calculator</h3>
     <div class="bmi-inputs">
